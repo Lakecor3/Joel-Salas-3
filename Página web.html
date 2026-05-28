@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Personal | Joel Salas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylepro.css">
+</head>
+<body>
+
+    <header class="sitio-header">
+        <div class="contenedor header-flex">
+            <div class="logo">JS</div>
+            <nav class="navegacion-principal">
+                <a href="#inicio">Inicio</a>
+                <a href="#sobre-mi">Sobre mí</a>
+                <a href="#proyectos">Proyectos</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="inicio" class="seccion-hero">
+            <div class="contenedor hero-flex">
+                <div class="hero-contenido">
+                    <h1>Hola, soy Joel Salas</h1>
+                    <h2>Multimedia y Producción Audiovisual</h2>
+                    <p>Soy un estudiante de la Universidad Politécnica Estatal del Carchi, me gustan muchas cosas como son el diseño, edición, animación, fotografía, etc. Aprovecho la mayor parte del tiempo dedicándome a estas actividades.</p>
+                    <a href="#proyectos" class="boton-acento">Ver proyectos</a>
+                </div>
+                <div class="hero-imagen">
+                    <img src="https://i.pinimg.com/736x/13/b7/a7/13b7a717c01bf2e2e8a4865389534afe.jpg" alt="Foto de perfil de Joel Salas width 80px">
+                </div>
+            </div>
+        </section>
+
+        <section id="proyectos" class="seccion-proyectos">
+            <div class="contenedor">
+                <h2 class="titulo-seccion">Mis Proyectos</h2>
+                <div class="proyectos-grid">
+                    <article class="tarjeta-proyecto">
+                        <img src="https://i.pinimg.com/1200x/ed/93/a0/ed93a0b38e3c25cf441d83506e3d7d50.jpg" alt="Miniatura del Proyecto 1">
+                        <div class="tarjeta-cuerpo">
+                            <h3>Publicidad y Marketing</h3>
+                            <p>Diseñar distintos estilos de diseños tanto para publicidad, reels en redes sociales, carteles publicitarios, diseños peronalizados, y lo más importante servir a la estética de uno mismo y del cliente.</p>
+                        </div>
+                    </article>
+                    <article class="tarjeta-proyecto">
+                        <img src="https://i.pinimg.com/736x/4e/54/58/4e5458dd78f79b5109cbee5fec0448a3.jpg" alt="Miniatura del Proyecto 2">
+                        <div class="tarjeta-cuerpo">
+                            <h3>Revistas</h3>
+                            <p>Crear diseños utilizando la herramienta de Adobe Illustrator. El objetivo principal es entender los principios básicos del diseño tomando en cuenta la jerarquía visual, paletas de colores, composición artística, etc. </p>
+                        </div>
+                    </article>
+                    <article class="tarjeta-proyecto">
+                        <img src="https://i.pinimg.com/736x/87/00/5a/87005a8cbbece16f367305aec03a2c1c.jpg" alt="Miniatura del Proyecto 3">
+                        <div class="tarjeta-cuerpo">
+                            <h3>Marca Personal</h3>
+                            <p>La creación de un kit de marca es importante para la identificación y entidad de tu propio negocio, ya sea de cualquier cosa en lo que más te desempeñas.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre-mi" class="seccion-habilidades">
+            <div class="contenedor">
+                <h2 class="titulo-seccion">Habilidades</h2>
+                <div class="habilidades-flex">
+                    <div class="tarjeta-habilidad">Sony Vegas pro</div>
+                    <div class="tarjeta-habilidad">CapCut</div>
+                    <div class="tarjeta-habilidad">DaVinci</div>
+                    <div class="tarjeta-habilidad">Adobe Photoshop</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="seccion-contacto">
+            <div class="contenedor contacto-flex">
+                <div class="contacto-info">
+                    <h3>¿Tienes un proyecto en mente?</h3>
+                    <p>Mi proyecto en mente es graduarme de la carrera de multimedia y producción audiovisual con el objetivo de trabajar en cualquier ámbito de desempeño y poder trabajar agusto en lo que más me gusta.</p>
+                </div>
+                <div class="contacto-formulario">
+                    <form action="#" method="POST">
+                        <div class="grupo-formulario">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="grupo-formulario">
+                            <label for="correo">Correo</label>
+                            <input type="email" id="correo" name="correo" required>
+                        </div>
+                        <div class="grupo-formulario">
+                            <label for="mensaje">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="boton-formulario">Enviar mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="sitio-footer">
+        <div class="contenedor footer-flex">
+            <p class="copyright">&copy; 2026 Joel Salas. Todos los derechos reservados.</p>
+            <div class="redes-sociales">
+                <a href="https://www.linkedin.com/jobs/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://www.instagram.com/lakecor33/" target="_blank" rel="noopener">Instagram</a>
+                <a href="https://github.com/settings/education/benefits" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.behance.net/thashthash" target="_blank" rel="noopener">Behance</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
