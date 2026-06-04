@@ -179,16 +179,18 @@
 }
 
 /* ==========================================================================
-   CONSOLA DE AUDIO MECÁNICA (UBICACIÓN CENTRADA EN LA MITAD INFERIOR)
+   CONSOLA DE AUDIO MECÁNICA (UBICACIÓN CENTRADA TOTAL E INMUNE)
    ========================================================================== */
 
-/* Contenedor flotante centrado en la parte inferior de la pantalla */
+/* Contenedor flotante centrado de forma absoluta respecto a la pantalla entera */
 .reproductor-gotico-fijo {
     position: fixed !important;
-    bottom: 25px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important; /* Mueve el botón exactamente al centro horizontal */
-    z-index: 999999 !important; /* Se asegura de flotar sobre cualquier capa */
+    bottom: 25px !important;    /* Distancia desde el borde inferior */
+    left: 0 !important;         /* Estira la zona de cálculo a la izquierda */
+    right: 0 !important;        /* Estira la zona de cálculo a la derecha */
+    margin: 0 auto !important;  /* Centra el elemento en el eje horizontal matemáticamente */
+    width: max-content !important; /* Se ajusta solo al tamaño del botón */
+    z-index: 999999 !important; /* Lo pone por encima de cualquier capa o footer */
 }
 
 /* CHASIS EXTERNO DEL BOTÓN */
@@ -248,25 +250,26 @@ button.btn-musica-mecanico-real .superficie-boton-real {
     width: 18px !important;
 }
 
-/* Líneas base del ecualizador */
+/* ¡SOLUCIÓN A LOS TRES PUNTOS! 
+   Por defecto las barras están ocultas (display: none) para que no se vean como puntos fijos.
+*/
 .onda-real {
+    display: none !important; 
     width: 3px !important;
     height: 3px !important;
     background-color: #3f3f46 !important;
     border-radius: 2px !important;
 }
 
-/* --- MECÁNICA INTERACTIVA DEL CURSOR (HOVER Y ACTIVE CENTRADOS) --- */
+/* --- MECÁNICA INTERACTIVA DEL CURSOR (HOVER Y ACTIVE SIMÉTRICOS) --- */
 
 button.btn-musica-mecanico-real:hover {
-    /* Mantiene el centrado horizontal y añade una escala leve al interactuar */
-    transform: translateX(-50%) scale(1.02) !important; 
+    transform: scale(1.03) !important; 
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.7), 0 0 10px rgba(138, 43, 226, 0.3) !important;
 }
 
 button.btn-musica-mecanico-real:active {
-    /* Efecto de hundimiento manteniendo el eje del centro */
-    transform: translateX(-50%) scale(0.98) !important; 
+    transform: scale(0.97) !important; 
 }
 
 button.btn-musica-mecanico-real:active .superficie-boton-real {
@@ -291,7 +294,9 @@ button.btn-musica-mecanico-real.sonando .icono-musica-real {
     animation: rotarDiscoReal 2.5s linear infinite !important;
 }
 
+/* Cuando la música esté sonando, las barras se vuelven visibles e inician su animación */
 button.btn-musica-mecanico-real.sonando .onda-real {
+    display: inline-block !important;
     background-color: #a04ef6 !important;
 }
 
@@ -299,10 +304,7 @@ button.btn-musica-mecanico-real.sonando .o1-r { animation: reboteOndaReal 0.6s e
 button.btn-musica-mecanico-real.sonando .o2-r { animation: reboteOndaReal 0.4s ease-in-out infinite alternate 0.15s !important; }
 button.btn-musica-mecanico-real.sonando .o3-r { animation: reboteOndaReal 0.8s ease-in-out infinite alternate 0.3s !important; }
 
-/* ==========================================================================
-   ANIMACIONES CLAVE (KEYFRAMES)
-   ========================================================================== */
-
+/* Animaciones de reproducción */
 @keyframes rotarDiscoReal {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
