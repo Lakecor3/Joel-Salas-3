@@ -182,23 +182,25 @@
    CONSOLA DE AUDIO MECÁNICA (UBICACIÓN CENTRADA EN LA MITAD INFERIOR)
    ========================================================================== */
 
-/* Contenedor flotante centrado de forma absoluta en la parte inferior */
+/* Contenedor flotante centrado de forma absoluta e inmune a elementos externos */
 .reproductor-gotico-fijo {
     position: fixed !important;
-    bottom: 25px !important; /* Distancia desde abajo */
-    left: 50% !important;    /* Lo ubica justo en la mitad horizontal */
-    transform: translateX(-50%) !important; /* Alineación perfecta independiente del contenido */
-    z-index: 999999 !important; /* Se asegura de flotar sobre cualquier capa */
+    bottom: 25px !important;    /* Distancia fija desde el borde inferior de la pantalla */
+    left: 0 !important;         /* Alinea el rango al extremo izquierdo */
+    right: 0 !important;        /* Alinea el rango al extremo derecho */
+    margin: 0 auto !important;  /* ¡MAGIA! Distribuye los márgenes en automático para centrarlo horizontalmente */
+    width: max-content !important; /* Se ajusta exactamente al tamaño real de tu botón */
+    z-index: 999999 !important; /* Se asegura de flotar por encima de cualquier otro div */
 }
 
-/* Ajustes interactivos para mantener el eje del centro intacto */
+/* Ajustes de animación manteniendo la posición fija en su lugar */
 button.btn-musica-mecanico-real:hover {
-    transform: scale(1.03) !important; /* Crece levemente de forma simétrica */
+    transform: scale(1.03) !important; /* Escala hacia afuera de forma limpia */
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.7), 0 0 15px rgba(138, 43, 226, 0.4) !important;
 }
 
 button.btn-musica-mecanico-real:active {
-    transform: scale(0.97) !important; /* Efecto de clic físico simétrico */
+    transform: scale(0.97) !important; /* Efecto físico de hundimiento al pulsarlo */
 }
 
 /* CHASIS EXTERNO DEL BOTÓN */
