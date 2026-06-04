@@ -182,13 +182,23 @@
    CONSOLA DE AUDIO MECÁNICA (UBICACIÓN CENTRADA EN LA MITAD INFERIOR)
    ========================================================================== */
 
-/* Contenedor flotante centrado en la parte inferior de la pantalla */
+/* Contenedor flotante centrado de forma absoluta en la parte inferior */
 .reproductor-gotico-fijo {
     position: fixed !important;
-    bottom: 25px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important; /* Mueve el botón exactamente al centro horizontal */
+    bottom: 25px !important; /* Distancia desde abajo */
+    left: 50% !important;    /* Lo ubica justo en la mitad horizontal */
+    transform: translateX(-50%) !important; /* Alineación perfecta independiente del contenido */
     z-index: 999999 !important; /* Se asegura de flotar sobre cualquier capa */
+}
+
+/* Ajustes interactivos para mantener el eje del centro intacto */
+button.btn-musica-mecanico-real:hover {
+    transform: scale(1.03) !important; /* Crece levemente de forma simétrica */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.7), 0 0 15px rgba(138, 43, 226, 0.4) !important;
+}
+
+button.btn-musica-mecanico-real:active {
+    transform: scale(0.97) !important; /* Efecto de clic físico simétrico */
 }
 
 /* CHASIS EXTERNO DEL BOTÓN */
