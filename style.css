@@ -328,3 +328,78 @@ button.btn-musica-mecanico-real.sonando .o3-r { animation: reboteOndaReal 0.8s e
     0% { height: 3px; }
     100% { height: 14px; }
 }
+
+
+/* ==========================================================================
+   VENTANA EMERGENTE (MODAL) PARA VER PROYECTOS EN PANTALLA COMPLETA
+   ========================================================================== */
+
+/* Contenedor negro de fondo que cubre toda la pantalla */
+.modal-vista-completa {
+    display: none; /* Oculto por defecto hasta que se hace clic */
+    position: fixed; 
+    z-index: 99999; /* Se posiciona por encima de todo */
+    padding-top: 60px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(10, 10, 10, 0.95); /* Fondo oscuro gótico */
+    backdrop-filter: blur(6px); /* Difumina lo que está detrás */
+}
+
+/* La imagen expandida */
+.contenido-modal {
+    margin: auto;
+    display: block;
+    max-width: 85%;
+    max-height: 80vh;
+    border: 1px solid #333;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
+    object-fit: contain;
+    
+    /* Animación suave para que aparezca escalando */
+    animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Botón para cerrar (La equis '×') */
+.cerrar-modal {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #888;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.cerrar-modal:hover {
+    color: #ff3333; /* Cambia a rojo al pasar el mouse */
+    transform: scale(1.1);
+}
+
+/* Título de la imagen abajo */
+.subtitulo-modal {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #aaa;
+    font-family: 'Inter', sans-serif;
+    padding: 15px 0;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+/* Bloquea el scroll de la página de fondo cuando el modal está activo */
+body.modal-abierto {
+    overflow: hidden;
+}

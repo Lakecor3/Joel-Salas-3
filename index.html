@@ -693,14 +693,14 @@
                         </div>
                     </article>
                     <article class="tarjeta-proyecto">
-                        <img src="https://i.pinimg.com/736x/4e/54/58/4e5458dd78f79b5109cbee5fec0448a3.jpg" alt="Miniatura del Proyecto 2">
+                        <img src="https://i.pinimg.com/736x/4e/54/58/4e5458dd78f79b5109cbee5fec0448a3.jpg" alt="Revistas" class="imagen-proyecto-clic">
                         <div class="tarjeta-cuerpo">
                             <h3>Revistas</h3>
                             <p>Crear diseños utilizando la herramienta de Adobe Illustrator. El objetivo principal es entender los principios básicos del diseño tomando en cuenta la jerarquía visual, paletas de colores, composition artística, etc. </p>
                         </div>
                     </article>
                     <article class="tarjeta-proyecto">
-                        <img src="https://i.pinimg.com/736x/87/00/5a/87005a8cbbece16f367305aec03a2c1c.jpg" alt="Miniatura del Proyecto 3">
+                        <img src="https://i.pinimg.com/736x/87/00/5a/87005a8cbbece16f367305aec03a2c1c.jpg" alt="Marca Personal" class="imagen-proyecto-clic">
                         <div class="tarjeta-cuerpo">
                             <h3>Marca Personal</h3>
                             <p>La creación de un kit de marca es importante para la identificación y entidad de tu propio negocio, ya sea de cualquier cosa en lo que más te desempeñas.</p>
@@ -876,7 +876,46 @@
             if (texto) texto.textContent = 'Música';
         }
     }
+
+
     </script>
+    <script>
+// Lógica para expandir imágenes de proyectos
+document.addEventListener("DOMContentLoaded", function() {
+    const modal = document.getElementById("modal-proyecto");
+    const imgModal = document.getElementById("imagen-maximizada");
+    const textoModal = document.getElementById("descripcion-modal");
+    const botonCerrar = document.querySelector(".cerrar-modal");
+    const imagenesProyectos = document.querySelectorAll(".imagen-proyecto-clic");
+
+    // Al hacer clic en cualquier imagen con la clase asignada
+    imagenesProyectos.forEach(imagen => {
+        imagen.style.cursor = "pointer"; // Le pone la manito de clic
+        imagen.addEventListener("click", function() {
+            modal.style.display = "block";
+            imgModal.src = this.src; // Copia la ruta de la imagen
+            textoModal.textContent = this.alt; // Usa el texto "alt" como título
+            document.body.classList.add("modal-abierto"); // Bloquea el fondo
+        });
+    });
+
+    // Cerrar al hacer clic en la (X)
+    botonCerrar.addEventListener("click", cerrarVentana);
+
+    // Cerrar también si hacen clic en cualquier parte oscura fuera de la imagen
+    modal.addEventListener("click", function(e) {
+        if (e.target === modal) {
+            cerrarVentana();
+        }
+    });
+
+    function cerrarVentana() {
+        modal.style.display = "none";
+        document.body.classList.remove("modal-open");
+        document.body.classList.remove("modal-abierto");
+    }
+});
+</script>
 
 </body>
 </html>
