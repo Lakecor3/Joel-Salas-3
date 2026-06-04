@@ -513,14 +513,16 @@ a {
    10. CONSOLA DE AUDIO CENTRADA (REPRODUCTOR)
    ========================================================================== */
 .reproductor-gotico-fijo {
+    position: relative !important; /* Cambia de fixed a relative */
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
     width: 100% !important;
-    margin: 40px 0 !important; /* Espaciado superior e inferior para que respire */
-    position: relative !important;
-    bottom: auto !important;
-    right: auto !important;
+    margin: 50px auto !important; /* Le da espacio arriba y abajo */
     z-index: 999 !important;
 }
 
