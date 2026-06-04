@@ -100,12 +100,6 @@
    ESTILOS EXCLUSIVOS PARA LOS BOTONES DESPLEGABLES (DETAILS / SUMMARY)
    ========================================================================== */
 
-.seccion-imagen {
-    padding: 80px 0;
-    background-color: #0d0d11 !important; /* Variación sutil de fondo oscuro */
-    text-align: center;
-}
-
 .subtitulo {
     color: #a0a0aa !important;
     margin-bottom: 30px;
@@ -176,7 +170,7 @@
 
 .seccion-imagen {
     padding: 80px 0;
-    /* 1. Aquí se vuelve a aplicar tu imagen de fondo original */
+    background-color: #0d0d11 !important; /* Variación sutil de fondo oscuro de reserva */
     background-image: linear-gradient(rgba(10, 10, 12, 0.85), rgba(10, 10, 12, 0.85)), url('tu-imagen-de-fondo.jpg'); 
     background-size: cover;
     background-position: center;
@@ -185,21 +179,19 @@
 }
 
 /* ==========================================================================
-   CONSOLA DE AUDIO MECÁNICA (ESTILO TRIDIMENSIONAL GÓTICO)
+   CONSOLA DE AUDIO MECÁNICA (UBICACIÓN CENTRADA ABAJO)
    ========================================================================== */
 
-/* Contenedor flotante en la esquina inferior derecha */
+/* Contenedor flotante centrado en la parte inferior de la pantalla */
 .reproductor-gotico-fijo {
     position: fixed !important;
     bottom: 25px !important;
-    right: 25px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important; /* Centrado horizontal perfecto */
     z-index: 999999 !important; /* Se asegura de flotar sobre cualquier capa */
 }
 
-/* 
-   CHASIS EXTERNO DEL BOTÓN 
-   Anula el diseño gris, cuadrado y plano por defecto de los navegadores viejo
-*/
+/* CHASIS EXTERNO DEL BOTÓN */
 button.btn-musica-mecanico-real {
     background: #09090b !important;
     border: 2px solid #27272a !important;
@@ -213,10 +205,10 @@ button.btn-musica-mecanico-real {
     display: block !important;
 }
 
-/* SUPERFICIE INTERNA TRIDIMENSIONAL (Relieve y color de fuente) */
+/* SUPERFICIE INTERNA TRIDIMENSIONAL */
 button.btn-musica-mecanico-real .superficie-boton-real {
     background: linear-gradient(135deg, #1c1c22, #131316) !important;
-    color: #f4f4f6 !important; /* Fuerza las letras a color blanco/gris nítido */
+    color: #f4f4f6 !important;
     border: 1px solid #3f3f46 !important;
     padding: 10px 22px !important;
     border-radius: 26px !important;
@@ -266,49 +258,41 @@ button.btn-musica-mecanico-real .superficie-boton-real {
 
 /* --- MECÁNICA INTERACTIVA DEL CURSOR (HOVER Y ACTIVE) --- */
 
-/* Elevación sutil al pasar el mouse por encima */
 button.btn-musica-mecanico-real:hover {
-    transform: translateY(-2px) !important;
+    transform: scale(1.02) translateY(0) !important; /* Ajuste leve para mantener el centrado */
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.7), 0 0 10px rgba(138, 43, 226, 0.3) !important;
 }
 
-/* Efecto físico de hundimiento real al hacer clic */
 button.btn-musica-mecanico-real:active {
-    transform: translateY(2px) !important; 
+    transform: scale(0.98) !important; 
 }
 
 button.btn-musica-mecanico-real:active .superficie-boton-real {
     box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.7) !important;
-    transform: scale(0.98) !important;
 }
 
 /* ==========================================================================
    ESTADOS DE REPRODUCCIÓN (ACTIVADOS DINÁMICAMENTE POR JAVASCRIPT)
    ========================================================================== */
 
-/* Cambia el contorno del botón a un aura de neón morada */
 button.btn-musica-mecanico-real.sonando .superficie-boton-real {
     border-color: #8a2be2 !important; 
     box-shadow: 0 0 15px rgba(138, 43, 226, 0.4) !important;
 }
 
-/* Enciende el pequeño LED de estado a morado brillante */
 button.btn-musica-mecanico-real.sonando .led-indicador-real {
     background-color: #a04ef6 !important; 
     box-shadow: 0 0 10px #8a2be2 !important;
 }
 
-/* Hace rotar de forma infinita el emoji del disco 💿 */
 button.btn-musica-mecanico-real.sonando .icono-musica-real {
     animation: rotarDiscoReal 2.5s linear infinite !important;
 }
 
-/* Ilumina las barras del ecualizador en sintonía con el LED */
 button.btn-musica-mecanico-real.sonando .onda-real {
     background-color: #a04ef6 !important;
 }
 
-/* Asignación de frecuencias y tiempos de desfase para las ondas dinámicas */
 button.btn-musica-mecanico-real.sonando .o1-r { animation: reboteOndaReal 0.6s ease-in-out infinite alternate !important; }
 button.btn-musica-mecanico-real.sonando .o2-r { animation: reboteOndaReal 0.4s ease-in-out infinite alternate 0.15s !important; }
 button.btn-musica-mecanico-real.sonando .o3-r { animation: reboteOndaReal 0.8s ease-in-out infinite alternate 0.3s !important; }
@@ -317,13 +301,11 @@ button.btn-musica-mecanico-real.sonando .o3-r { animation: reboteOndaReal 0.8s e
    ANIMACIONES CLAVE (KEYFRAMES)
    ========================================================================== */
 
-/* Animación de rotación para el disco */
 @keyframes rotarDiscoReal {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
 
-/* Animación de frecuencia para el ecualizador de barras */
 @keyframes reboteOndaReal {
     0% { height: 3px; }
     100% { height: 14px; }
