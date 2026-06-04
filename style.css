@@ -179,7 +179,7 @@
 }
 
 /* ==========================================================================
-   CONSOLA DE AUDIO MECÁNICA (UBICACIÓN CENTRADA ABAJO)
+   CONSOLA DE AUDIO MECÁNICA (UBICACIÓN CENTRADA EN LA MITAD INFERIOR)
    ========================================================================== */
 
 /* Contenedor flotante centrado en la parte inferior de la pantalla */
@@ -187,7 +187,7 @@
     position: fixed !important;
     bottom: 25px !important;
     left: 50% !important;
-    transform: translateX(-50%) !important; /* Centrado horizontal perfecto */
+    transform: translateX(-50%) !important; /* Mueve el botón exactamente al centro horizontal */
     z-index: 999999 !important; /* Se asegura de flotar sobre cualquier capa */
 }
 
@@ -256,15 +256,17 @@ button.btn-musica-mecanico-real .superficie-boton-real {
     border-radius: 2px !important;
 }
 
-/* --- MECÁNICA INTERACTIVA DEL CURSOR (HOVER Y ACTIVE) --- */
+/* --- MECÁNICA INTERACTIVA DEL CURSOR (HOVER Y ACTIVE CENTRADOS) --- */
 
 button.btn-musica-mecanico-real:hover {
-    transform: scale(1.02) translateY(0) !important; /* Ajuste leve para mantener el centrado */
+    /* Mantiene el centrado horizontal y añade una escala leve al interactuar */
+    transform: translateX(-50%) scale(1.02) !important; 
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.7), 0 0 10px rgba(138, 43, 226, 0.3) !important;
 }
 
 button.btn-musica-mecanico-real:active {
-    transform: scale(0.98) !important; 
+    /* Efecto de hundimiento manteniendo el eje del centro */
+    transform: translateX(-50%) scale(0.98) !important; 
 }
 
 button.btn-musica-mecanico-real:active .superficie-boton-real {
@@ -311,12 +313,6 @@ button.btn-musica-mecanico-real.sonando .o3-r { animation: reboteOndaReal 0.8s e
     100% { height: 14px; }
 }
 
-.reproductor-gotico-fijo {
-    position: fixed !important;
-    bottom: 25px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    z-index: 999999 !important;
-}
+
 
 
