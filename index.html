@@ -10,21 +10,15 @@
 </head>
 <body>
 
-    <!-- ==========================================================================
-     REPRODUCTOR DE MÚSICA GÓTICO INTEGRADO (HTML + CSS EN EL MISMO LUGAR)
-     ========================================================================== -->
     <div class="reproductor-gotico-fijo">
-        <!-- Contenedor invisible para la API de YouTube -->
         <div id="youtube-player-oculto" style="display: none !important; width:0; height:0;"></div>
         
-        <!-- Botón mecánico con chasis forzado -->
         <button id="btn-reproductor" class="btn-musica-mecanico-real" onclick="controlarMusica()" type="button">
             <div class="superficie-boton-real">
                 <span class="led-indicador-real"></span>
                 <span class="icono-musica-real">💿</span>
                 <span class="texto-musica-real">Música</span>
                 
-                <!-- Ecualizador dinámico -->
                 <div class="ondas-contenedor-real">
                     <span class="onda-real o1-r"></span>
                     <span class="onda-real o2-r"></span>
@@ -215,6 +209,7 @@
         }
 
         .logo {
+            display: inline-block;
             font-size: 1.5rem;
             font-weight: 700;
             letter-spacing: 2px;
@@ -828,27 +823,27 @@
         </div>
     </footer>
 
-    <!-- LLAMADA CORRECTA A LA API DE YOUTUBE IFRAME -->
-    <script src="https://www.youtube.com/watch?v=HyHlLFnkOOI"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
     
     <script>
     let player;
     let apiLista = false;
 
-    // Esta función se ejecuta automáticamente cuando se carga el script de arriba
+    // Esta función es llamada de forma nativa por el script oficial de YouTube al terminar de cargarse
     function onYouTubeIframeAPIReady() {
         player = new YT.Player('youtube-player-oculto', {
             height: '0',
             width: '0',
-            videoId: 'HyHlLFnkOOI', // ID real corregido
+            videoId: 'HyHlLFnkOOI', 
             playerVars: {
                 'autoplay': 0,
                 'loop': 1,
-                'playlist': 'HyHlLFnkOOI', // ID real para que repita en bucle
+                'playlist': 'HyHlLFnkOOI', 
                 'controls': 0,
                 'disablekb': 1,
                 'modestbranding': 1,
-                'rel': 0
+                'rel': 0,
+                'mute': 1 // 👈 Esencial: El navegador exige arrancar muteado para permitir control dinámico por botón
             },
             events: {
                 'onReady': onPlayerReady
@@ -858,18 +853,20 @@
 
     function onPlayerReady(event) {
         apiLista = true;
-        player.setVolume(40); // Volumen moderado inicial
+        // El reproductor ya está listo para responder a tus interacciones en segundo plano
     }
 
     function controlarMusica() {
-        if (!apiLista) return;
+        if (!apiLista || !player) return;
 
         const boton = document.getElementById('btn-reproductor');
         const texto = boton.querySelector('.texto-musica-real');
         const estadoActual = player.getPlayerState();
 
-        // 1 significa "reproduciendo" en la API de YouTube
+        // Si el video no se está reproduciendo (estado != 1)
         if (estadoActual !== 1) {
+            player.unMute();        // Quitamos el silencio obligatorio inicial
+            player.setVolume(50);   // Configuramos un buen volumen inicial al dar play (de 0 a 100)
             player.playVideo();
             boton.classList.add('sonando');
             if (texto) texto.textContent = 'PAUSA';
