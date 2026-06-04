@@ -311,4 +311,12 @@ button.btn-musica-mecanico-real.sonando .o3-r { animation: reboteOndaReal 0.8s e
     100% { height: 14px; }
 }
 
+.reproductor-gotico-fijo {
+    position: fixed !important;
+    bottom: 25px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 999999 !important;
+}
+
 
