@@ -3,406 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Portafolio</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        /* ==========================================================================
-           1. ESTILOS GENERALES Y BASE
-           ========================================================================== */
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #0a0a0c;
-            font-family: 'Inter', sans-serif;
-            color: #f4f4f6;
-            overflow-x: hidden;
-        }
-
-        /* ==========================================================================
-           2. SECCIÓN "MIS PROYECTOS"
-           ========================================================================== */
-        .about-section {
-            background-color: #0a0a0c !important; 
-            color: #f4f4f6 !important;            
-            padding: 80px 20px;
-            text-align: center;
-        }
-
-        .about-container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .about-container h2 {
-            font-size: 2.5rem;
-            color: #f4f4f6 !important;
-            margin-bottom: 40px;
-            letter-spacing: 1px;
-            border-bottom: 2px solid #8a2be2; 
-            display: inline-block;
-            padding-bottom: 5px;
-        }
-
-        /* Grid de Tarjetas */
-        .interactive-buttons {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 20px 0;
-        }
-
-        .card-interactive {
-            background-color: #131316 !important; 
-            border: 1px solid #27272a !important;   
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Contenedor de Imagen */
-        .contenedor-imagen-proy {
-            width: 100%;
-            height: 240px;
-            overflow: hidden;
-            background-color: #0a0a0c;
-        }
-
-        .card-interactive img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        /* Efectos Hover */
-        .card-interactive:hover {
-            border-color: #8a2be2 !important;
-            box-shadow: 0 8px 30px rgba(138, 43, 226, 0.2);
-            transform: translateY(-5px);
-        }
-
-        .card-interactive:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Textos Internos */
-        .contenido-tarjeta-proy {
-            padding: 25px;
-        }
-
-        .contenido-tarjeta-proy h3 {
-            font-size: 1.4rem;
-            color: #f4f4f6;
-            margin: 0 0 15px 0;
-            font-weight: 700;
-        }
-
-        .contenido-tarjeta-proy p {
-            font-size: 0.95rem;
-            color: #a0a0aa !important;
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        /* ==========================================================================
-           3. FOOTER
-           ========================================================================== */
-        footer {
-            background-color: #050507;
-            padding: 40px 20px;
-            margin-top: 60px;
-            border-top: 1px solid #131316;
-        }
-
-        .footer-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .footer-text {
-            color: #52525b;
-            font-size: 0.9rem;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .footer-links a {
-            color: #a0a0aa;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.2s;
-        }
-
-        .footer-links a:hover {
-            color: #8a2be2;
-        }
-
-        /* ==========================================================================
-           4. CONSOLA DE AUDIO MECÁNICA (CENTRADO FIJO)
-           ========================================================================== */
-        .reproductor-gotico-fijo {
-            position: fixed !important;
-            bottom: 25px !important;    
-            left: 0 !important;         
-            right: 0 !important;        
-            margin: 0 auto !important;  
-            width: max-content !important; 
-            z-index: 999999 !important; 
-        }
-
-        button.btn-musica-mecanico-real {
-            background: #09090b !important;
-            border: 2px solid #27272a !important;
-            padding: 4px !important;
-            border-radius: 30px !important;
-            cursor: pointer !important;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6), 
-                        inset 0 2px 4px rgba(255, 255, 255, 0.05) !important;
-            transition: all 0.2s ease !important;
-            outline: none !important;
-            display: block !important;
-        }
-
-        button.btn-musica-mecanico-real .superficie-boton-real {
-            background: linear-gradient(135deg, #1c1c22, #131316) !important;
-            color: #f4f4f6 !important;
-            border: 1px solid #3f3f46 !important;
-            padding: 10px 22px !important;
-            border-radius: 26px !important;
-            font-family: 'Inter', system-ui, sans-serif !important;
-            font-size: 0.85rem !important;
-            font-weight: 700 !important;
-            letter-spacing: 1.5px !important;
-            text-transform: uppercase !important;
-            display: flex !important;
-            align-items: center !important;
-            gap: 12px !important;
-            box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.1), 
-                        0 4px 6px rgba(0, 0, 0, 0.4) !important;
-        }
-
-        .led-indicador-real {
-            width: 8px !important;
-            height: 8px !important;
-            background-color: #3f3f46 !important;
-            border-radius: 50% !important;
-            display: inline-block !important;
-            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6) !important;
-        }
-
-        .icono-musica-real {
-            font-size: 1rem !important;
-            display: inline-block !important;
-        }
-
-        .ondas-contenedor-real {
-            display: flex !important;
-            align-items: flex-end !important;
-            gap: 3px !important;
-            height: 14px !important;
-            width: 18px !important;
-        }
-
-        /* Oculta las barras del ecualizador si está en pausa */
-        .onda-real {
-            display: none !important; 
-            width: 3px !important;
-            height: 3px !important;
-            background-color: #3f3f46 !important;
-            border-radius: 2px !important;
-        }
-
-        /* Animaciones Hover / Active */
-        button.btn-musica-mecanico-real:hover {
-            transform: scale(1.03) !important; 
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.7), 0 0 10px rgba(138, 43, 226, 0.3) !important;
-        }
-
-        button.btn-musica-mecanico-real:active {
-            transform: scale(0.97) !important; 
-        }
-
-        button.btn-musica-mecanico-real:active .superficie-boton-real {
-            box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.7) !important;
-        }
-
-        /* Estado Encendido (Playing) */
-        button.btn-musica-mecanico-real.sonando .superficie-boton-real {
-            border-color: #8a2be2 !important; 
-            box-shadow: 0 0 15px rgba(138, 43, 226, 0.4) !important;
-        }
-
-        button.btn-musica-mecanico-real.sonando .led-indicador-real {
-            background-color: #a04ef6 !important; 
-            box-shadow: 0 0 10px #8a2be2 !important;
-        }
-
-        button.btn-musica-mecanico-real.sonando .icono-musica-real {
-            animation: rotarDiscoReal 2.5s linear infinite !important;
-        }
-
-        button.btn-musica-mecanico-real.sonando .onda-real {
-            display: inline-block !important;
-            background-color: #a04ef6 !important;
-        }
-
-        button.btn-musica-mecanico-real.sonando .o1-r { animation: reboteOndaReal 0.6s ease-in-out infinite alternate !important; }
-        button.btn-musica-mecanico-real.sonando .o2-r { animation: reboteOndaReal 0.4s ease-in-out infinite alternate 0.15s !important; }
-        button.btn-musica-mecanico-real.sonando .o3-r { animation: reboteOndaReal 0.8s ease-in-out infinite alternate 0.3s !important; }
-
-        @keyframes rotarDiscoReal {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes reboteOndaReal {
-            0% { height: 3px; }
-            100% { height: 14px; }
-        }
-
-        /* ==========================================================================
-           5. MODAL DE PANTALLA COMPLETA
-           ========================================================================== */
-        .modal-vista-completa {
-            display: none; 
-            position: fixed; 
-            z-index: 9999999; 
-            padding-top: 40px; 
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgba(6, 6, 8, 0.96); 
-            backdrop-filter: blur(8px); 
-        }
-
-        .contenido-modal {
-            margin: auto;
-            display: block;
-            max-width: 85%;
-            max-height: 82vh;
-            border: 1px solid #27272a;
-            border-radius: 6px;
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
-            object-fit: contain;
-            animation: zoomIn 0.25s ease-out; 
-        }
-
-        @keyframes zoomIn {
-            from { transform: scale(0.96); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        .cerrar-modal {
-            position: absolute;
-            top: 20px;
-            right: 35px;
-            color: #a0a0aa;
-            font-size: 38px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .cerrar-modal:hover {
-            color: #ef4444; 
-            transform: scale(1.1);
-        }
-
-        .subtitulo-modal {
-            margin: auto;
-            display: block;
-            width: 80%;
-            text-align: center;
-            color: #a0a0aa;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            padding: 20px 0;
-            font-weight: 600;
-        }
-
-        body.modal-abierto {
-            overflow: hidden;
-        }
-    </style>
+    <title>Portafolio Personal | Joel Salas</title>
+    <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
+    <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+    <link href="[https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap)" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
 
-    <section class="about-section">
-        <div class="about-container">
-            <h2>Mis Proyectos</h2>
-            
-            <div class="interactive-buttons">
-                
-                <div class="card-interactive">
-                    <div class="contenedor-imagen-proy">
-                        <img src="tu-imagen-anime.jpg" alt="Publicidad y Marketing">
-                    </div>
-                    <div class="contenido-tarjeta-proy">
-                        <h3>Publicidad y Marketing</h3>
-                        <p>Diseñar distintos estilos de diseño tanto para publicidad, reels en redes sociales, carteles publicitarios, diseños personalizados, y lo más importante servir a la estética de uno mismo y del cliente.</p>
-                    </div>
-                </div>
+<div class="reproductor-gotico-fijo">
+    <div id="youtube-player-oculto"></div> 
 
-                <div class="card-interactive">
-                    <div class="contenedor-imagen-proy">
-                        <img src="tu-imagen-revistas.jpg" alt="Revistas y Diseño Editorial">
-                    </div>
-                    <div class="contenido-tarjeta-proy">
-                        <h3>Revistas</h3>
-                        <p>Crear diseños utilizando la herramienta de Adobe Illustrator. El objetivo principal es entender los principios básicos del diseño tomando en cuenta la jerarquía, el uso correcto de colores, composition y tipografías.</p>
-                    </div>
-                </div>
-
-                <div class="card-interactive">
-                    <div class="contenedor-imagen-proy">
-                        <img src="tu-imagen-marca.jpg" alt="Marca Personal - Lakecore">
-                    </div>
-                    <div class="contenido-tarjeta-proy">
-                        <h3>Marca Personal</h3>
-                        <p>La creación de un kit de marca es importante para la identificación y entidad de tu propio negocio, ya sea de cualquier cosa en lo que más te desempeñas.</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-container">
-            <div class="footer-text">
-                &copy; 2026 Joel Salas. Todos los derechos reservados.
-            </div>
-            <div class="footer-links">
-                <a href="#">LinkedIn</a>
-                <a href="#">Instagram</a>
-                <a href="#">GitHub</a>
-                <a href="#">Behance</a>
-            </div>
-        </div>
-    </footer>
-
-    <div class="reproductor-gotico-fijo">
-        <button class="btn-musica-mecanico-real">
+        <button id="btn-reproductor" class="btn-musica-mecanico-real" onclick="controlarMusica()" type="button">
             <div class="superficie-boton-real">
                 <span class="led-indicador-real"></span>
                 <span class="icono-musica-real">💿</span>
-                <span>Música</span>
+                <span class="texto-musica-real">Música</span>
+                
                 <div class="ondas-contenedor-real">
                     <span class="onda-real o1-r"></span>
                     <span class="onda-real o2-r"></span>
@@ -412,85 +29,938 @@
         </button>
     </div>
 
-    <div class="modal-vista-completa">
+    <style>
+    /* Forzamos el aislamiento completo usando nombres de clases únicos */
+    .reproductor-gotico-fijo {
+        position: fixed !important;
+        bottom: 25px !important;
+        right: 25px !important;
+        z-index: 999999 !important;
+    }
+
+    /* Rompe el recuadro gris por defecto del navegador */
+    button.btn-musica-mecanico-real {
+        background: #09090b !important;
+        border: 2px solid #27272a !important;
+        padding: 4px !important;
+        border-radius: 30px !important;
+        cursor: pointer !important;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6), 
+                    inset 0 2px 4px rgba(255, 255, 255, 0.05) !important;
+        transition: all 0.2s ease !important;
+        outline: none !important;
+        display: block !important;
+    }
+
+    /* Cuerpo interno tridimensional con tonos oscuros y fuentes limpias */
+    button.btn-musica-mecanico-real .superficie-boton-real {
+        background: linear-gradient(135deg, #1c1c22, #131316) !important;
+        color: #f4f4f6 !important; /* Texto blanco */
+        border: 1px solid #3f3f46 !important;
+        padding: 10px 22px !important;
+        border-radius: 26px !important;
+        font-family: 'Inter', system-ui, sans-serif !important;
+        font-size: 0.85rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 1.5px !important;
+        text-transform: uppercase !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 12px !important;
+        box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.1), 
+                    0 4px 6px rgba(0, 0, 0, 0.4) !important;
+    }
+
+    /* LED de estado apagado */
+    .led-indicador-real {
+        width: 8px !important;
+        height: 8px !important;
+        background-color: #3f3f46 !important;
+        border-radius: 50% !important;
+        display: inline-block !important;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6) !important;
+    }
+
+    .icono-musica-real {
+        font-size: 1rem !important;
+        display: inline-block !important;
+    }
+
+    .ondas-contenedor-real {
+        display: flex !important;
+        align-items: flex-end !important;
+        gap: 3px !important;
+        height: 14px !important;
+        width: 18px !important;
+    }
+
+    .onda-real {
+        width: 3px !important;
+        height: 3px !important;
+        background-color: #3f3f46 !important;
+        border-radius: 2px !important;
+    }
+
+    /* --- INTERACTIVIDAD HOVER Y ACTIVE (Efecto de hundido mecánico) --- */
+    button.btn-musica-mecanico-real:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.7), 0 0 10px rgba(138, 43, 226, 0.3) !important;
+    }
+
+    button.btn-musica-mecanico-real:active {
+        transform: translateY(2px) !important;
+    }
+
+    button.btn-musica-mecanico-real:active .superficie-boton-real {
+        box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.7) !important;
+        transform: scale(0.98) !important;
+    }
+
+    /* --- ESTADO ACTIVO (Cuando suena la música) --- */
+    button.btn-musica-mecanico-real.sonando .superficie-boton-real {
+        border-color: #8a2be2 !important; /* Brillo morado neon */
+        box-shadow: 0 0 15px rgba(138, 43, 226, 0.4) !important;
+    }
+
+    button.btn-musica-mecanico-real.sonando .led-indicador-real {
+        background-color: #a04ef6 !important; /* Enciende el LED */
+        box-shadow: 0 0 10px #8a2be2 !important;
+    }
+
+    button.btn-musica-mecanico-real.sonando .icono-musica-real {
+        animation: rotarDiscoReal 2.5s linear infinite !important;
+    }
+
+    button.btn-musica-mecanico-real.sonando .onda-real {
+        background-color: #a04ef6 !important;
+    }
+
+    button.btn-musica-mecanico-real.sonando .o1-r { animation: reboteOndaReal 0.6s ease-in-out infinite alternate !important; }
+    button.btn-musica-mecanico-real.sonando .o2-r { animation: reboteOndaReal 0.4s ease-in-out infinite alternate 0.15s !important; }
+    button.btn-musica-mecanico-real.sonando .o3-r { animation: reboteOndaReal 0.8s ease-in-out infinite alternate 0.3s !important; }
+
+    @keyframes rotarDiscoReal {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    @keyframes reboteOndaReal {
+        0% { height: 3px; }
+        100% { height: 14px; }
+    }
+    
+    /* Estilos para el Modal de Proyectos */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.9);
+    }
+    .modal-contenido {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        max-height: 80vh;
+        object-fit: contain;
+        padding-top: 60px;
+    }
+    .cerrar-modal {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    #descripcion-modal {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        text-align: center;
+        color: #ccc;
+        padding: 10px 0;
+    }
+    body.modal-abierto {
+        overflow: hidden;
+    }
+    </style>
+
+    <style>
+        /* ==========================================
+           PALETA DE COLORES GÓTICA / DISTÓPICA
+           ========================================== */
+        :root {
+            --fondo-oscuro: #0a0a0c;       /* Negro profundo con matriz fría */
+            --fondo-tarjetas: #131316;     /* Gris grafito muy oscuro */
+            --color-acento: #ac0d0d;       /* Carmesí / Gótico */
+            --color-acento-hover: #a04ef6; /* Morado neón brillante */
+            --texto-principal: #f4f4f6;   /* Blanco roto (alta legibilidad) */
+            --texto-secundario: #a0a0aa;  /* Gris claro para descripciones */
+            --borde-sutil: #27272a;        /* Líneas oscuras divisorias */
+            --rojo-distopico: #e70a0a;     /* Toque carmesí para detalles */
+        }
+
+        /* RESET GENERAL */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--fondo-oscuro);
+            color: var(--texto-principal);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .contenedor {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        a {
+            color: var(--texto-principal);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        /* HEADER & NAVEGACIÓN */
+        .sitio-header {
+            background-color: rgba(10, 10, 12, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--borde-sutil);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 0;
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: inline-block;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--color-acento);
+            text-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+        }
+
+        .navegacion-principal a {
+            margin-left: 20px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--texto-secundario);
+        }
+
+        .navegacion-principal a:hover {
+            color: var(--color-acento-hover);
+        }
+
+        /* SECCIÓN HERO (INICIO) */
+        .seccion-hero {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--borde-sutil);
+        }
+
+        .hero-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-contenido {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hero-contenido h1 {
+            font-size: 3rem;
+            line-height: 1.1;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .hero-contenido h2 {
+            font-size: 1.5rem;
+            color: var(--color-acento);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .hero-contenido p {
+            color: var(--texto-secundario);
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+        }
+
+        .boton-acento {
+            display: inline-block;
+            background-color: var(--color-acento);
+            padding: 12px 28px;
+            font-weight: 600;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .boton-acento:hover {
+            background-color: var(--color-acento-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(138, 43, 226, 0.5);
+        }
+
+        .hero-imagen img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid var(--borde-sutil);
+            filter: grayscale(40%) contrast(110%);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* SECCIÓN PROYECTOS (GRID) */
+        .seccion-proyectos {
+            padding: 80px 0;
+            background-color: #0d0d11;
+            border-bottom: 1px solid var(--borde-sutil);
+        }
+
+        .titulo-seccion {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 50px;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .proyectos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .tarjeta-proyecto {
+            background-color: var(--fondo-tarjetas);
+            border: 1px solid var(--borde-sutil);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .tarjeta-proyecto:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-acento);
+        }
+
+        .tarjeta-proyecto img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            filter: grayscale(30%) BRIGHTNESS(85%);
+            transition: filter 0.3s ease;
+        }
+
+        .tarjeta-proyecto:hover img {
+            filter: grayscale(0%) BRIGHTNESS(100%);
+        }
+
+        .tarjeta-cuerpo {
+            padding: 25px;
+        }
+
+        .tarjeta-cuerpo h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--texto-principal);
+        }
+
+        .tarjeta-cuerpo p {
+            color: var(--texto-secundario);
+            font-size: 0.95rem;
+        }
+
+        /* SECCIÓN HABILIDADES (PÍLDORAS) */
+        .seccion-habilidades {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--borde-sutil);
+        }
+
+        .habilidades-flex {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .tarjeta-habilidad {
+            background-color: var(--fondo-tarjetas);
+            border: 1px solid var(--borde-sutil);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--texto-secundario);
+            transition: all 0.3s ease;
+        }
+
+        .tarjeta-habilidad:hover {
+            border-color: var(--rojo-distopico);
+            color: var(--texto-principal);
+            background-color: rgba(153, 0, 0, 0.1);
+            transform: scale(1.05);
+        }
+
+        /* SECCIÓN SOBRE MÍ INTERACTIVA */
+        .about-section {
+            background-color: var(--fondo-oscuro);
+            padding: 80px 0;
+            border-bottom: 1px solid var(--borde-sutil);
+        }
+
+        .about-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-container h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--color-acento);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .about-intro {
+            font-size: 1.1rem;
+            color: var(--texto-secundario);
+            margin-bottom: 40px;
+        }
+
+        .interactive-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card-interactive {
+            background-color: var(--fondo-tarjetas);
+            border: 1px solid var(--borde-sutil);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .btn-about {
+            width: 100%;
+            background-color: var(--fondo-tarjetas);
+            color: var(--texto-principal);
+            border: none;
+            padding: 18px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease;
+        }
+
+        .card-interactive:hover {
+            border-color: var(--color-acento);
+            box-shadow: 0 4px 20px rgba(138, 43, 226, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .card-interactive:hover .btn-about {
+            background-color: var(--color-acento);
+        }
+
+        .card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.3s ease;
+            padding: 0 20px;
+            background-color: #0a0a0c;
+            text-align: left;
+        }
+
+        .card-content p {
+            font-size: 0.95rem;
+            color: var(--texto-secundario);
+        }
+
+        .card-interactive:hover .card-content {
+            max-height: 180px;
+            padding: 20px;
+        }
+
+        /* BOTONES DESPLEGABLES EXTRAS (DETAILS) */
+        .seccion-imagen {
+            padding: 80px 0;
+            background-color: #0d0d11;
+            border-bottom: 1px solid var(--borde-sutil);
+            text-align: center;
+        }
+
+        .subtitulo {
+            color: var(--texto-secundario);
+            margin-bottom: 30px;
+        }
+
+        .contenedor-botones {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .boton-interactivo {
+            background-color: var(--fondo-tarjetas);
+            border: 1px solid var(--borde-sutil);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .boton-interactivo summary {
+            padding: 16px 20px;
+            font-weight: 600;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .boton-interactivo summary::after {
+            content: '＋';
+            color: var(--color-acento);
+        }
+
+        .boton-interactivo:hover {
+            border-color: var(--color-acento);
+        }
+
+        .boton-interactivo[open] summary::after {
+            content: '✕';
+            color: var(--rojo-distopico);
+        }
+
+        .contenido-boton {
+            padding: 20px;
+            background-color: #0a0a0c;
+            border-top: 1px solid var(--borde-sutil);
+        }
+
+        .contenido-boton p {
+            color: var(--texto-secundario);
+        }
+
+        /* SECCIÓN CONTACTO & FORMULARIO */
+        .seccion-contacto {
+            padding: 80px 0;
+        }
+
+        .contacto-flex {
+            display: flex;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .contacto-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contacto-info h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .contacto-info p {
+            color: var(--texto-secundario);
+            font-size: 1.05rem;
+        }
+
+        .contacto-formulario {
+            flex: 1.2;
+            min-width: 300px;
+            background-color: var(--fondo-tarjetas);
+            padding: 35px;
+            border-radius: 12px;
+            border: 1px solid var(--borde-sutil);
+        }
+
+        .grupo-formulario {
+            margin-bottom: 20px;
+        }
+
+        .grupo-formulario label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--texto-secundario);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .grupo-formulario input,
+        .grupo-formulario textarea {
+            width: 100%;
+            background-color: var(--fondo-oscuro);
+            border: 1px solid var(--borde-sutil);
+            padding: 12px;
+            border-radius: 6px;
+            color: var(--texto-principal);
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .grupo-formulario input:focus,
+        .grupo-formulario textarea:focus {
+            outline: none;
+            border-color: var(--color-acento);
+        }
+
+        .boton-formulario {
+            width: 100%;
+            background-color: transparent;
+            border: 2px solid var(--color-acento);
+            color: var(--texto-principal);
+            padding: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .boton-formulario:hover {
+            background-color: var(--color-acento);
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+        }
+
+        /* FOOTER */
+        .sitio-footer {
+            background-color: #050507;
+            padding: 30px 0;
+            border-top: 1px solid var(--borde-sutil);
+            font-size: 0.9rem;
+            color: var(--texto-secundario);
+        }
+
+        .footer-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .redes-sociales a {
+            margin-left: 15px;
+            color: var(--texto-secundario);
+        }
+
+        .redes-sociales a:hover {
+            color: var(--color-acento-hover);
+        }
+
+        /* RESPONSIVE SENCILLO */
+        @media (max-width: 768px) {
+            .hero-flex { flex-direction: column-reverse; text-align: center; }
+            .footer-flex { flex-direction: column; text-align: center; }
+            .redes-sociales a { margin: 0 8px; }
+        }
+    </style>
+
+    <header class="sitio-header">
+        <div class="contenedor header-flex">
+            <div class="logo">JS</div>
+            <nav class="navegacion-principal">
+                <a href="#inicio">Inicio</a>
+                <a href="#proyectos">Proyectos</a>
+                <a href="#sobre-mi">Sobre mí</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="inicio" class="seccion-hero">
+            <div class="contenedor hero-flex">
+                <div class="hero-contenido">
+                    <h1>Hola, soy Joel Salas</h1>
+                    <h2>Multimedia y Producción Audiovisual</h2>
+                    <p>Soy un estudiante de la Universidad Politécnica Estatal del Carchi, me gustan muchas cosas como son el diseño, edición, animación, fotografía, etc. Aprovecho la mayor parte del tiempo dedicándome a estas actividades.</p>
+                    <a href="#proyectos" class="boton-acento">Ver proyectos</a>
+                </div>
+                <div class="hero-imagen">
+                    <img src="[https://i.pinimg.com/736x/13/b7/a7/13b7a717c01bf2e2e8a4865389534afe.jpg](https://i.pinimg.com/736x/13/b7/a7/13b7a717c01bf2e2e8a4865389534afe.jpg)" alt="Foto de perfil de Joel Salas">
+                </div>
+            </div>
+        </section>
+
+        <section id="proyectos" class="seccion-proyectos">
+            <div class="contenedor">
+                <h2 class="titulo-seccion">Mis Proyectos</h2>
+                <div class="proyectos-grid">
+                    <article class="tarjeta-proyecto">
+                        <img src="[https://i.pinimg.com/1200x/ed/93/a0/ed93a0b38e3c25cf441d83506e3d7d50.jpg](https://i.pinimg.com/1200x/ed/93/a0/ed93a0b38e3c25cf441d83506e3d7d50.jpg)" alt="Publicidad" class="imagen-proyecto-clic">
+                        <div class="tarjeta-cuerpo">
+                            <h3>Publicidad y Marketing</h3>
+                            <p>Diseñar distintos estilos de diseños tanto para publicidad, reels en redes sociales, carteles publicitarios, diseños peronalizados, y lo más importante servir a la estética de uno mismo y del cliente.</p>
+                        </div>
+                    </article>
+                    <article class="tarjeta-proyecto">
+                        <img src="[https://i.pinimg.com/736x/4e/54/58/4e5458dd78f79b5109cbee5fec0448a3.jpg](https://i.pinimg.com/736x/4e/54/58/4e5458dd78f79b5109cbee5fec0448a3.jpg)" alt="Revistas" class="imagen-proyecto-clic">
+                        <div class="tarjeta-cuerpo">
+                            <h3>Revistas</h3>
+                            <p>Crear diseños utilizando la herramienta de Adobe Illustrator. El objetivo principal es entender los principios básicos del diseño tomando en cuenta la jerarquía visual, paletas de colores, composition artística, etc. </p>
+                        </div>
+                    </article>
+                    <article class="tarjeta-proyecto">
+                        <img src="[https://i.pinimg.com/736x/87/00/5a/87005a8cbbece16f367305aec03a2c1c.jpg](https://i.pinimg.com/736x/87/00/5a/87005a8cbbece16f367305aec03a2c1c.jpg)" alt="Marca Personal" class="imagen-proyecto-clic">
+                        <div class="tarjeta-cuerpo">
+                            <h3>Marca Personal</h3>
+                            <p>La creación de un kit de marca es importante para la identificación y entidad de tu propio negocio, ya sea de cualquier cosa en lo que más te desempeñas.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion-habilidades">
+            <div class="contenedor">
+                <h2 class="titulo-seccion">Habilidades</h2>
+                <div class="habilidades-flex">
+                    <div class="tarjeta-habilidad">Sony Vegas pro</div>
+                    <div class="tarjeta-habilidad">CapCut</div>
+                    <div class="tarjeta-habilidad">DaVinci</div>
+                    <div class="tarjeta-habilidad">Adobe Photoshop</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre-mi" class="about-section">
+            <div class="about-container">
+                <h2>Sobre mí</h2>
+                <p class="about-intro">
+                    ¡Hola! Soy un apasionado del mundo audiovisual y el diseño digital. Me encanta transformar ideas en narrativas visuales únicas, combinando la técnica con un enfoque oscuro y creativo.
+                </p>
+
+                <div class="interactive-buttons">
+                    <div class="card-interactive">
+                        <button class="btn-about">Producción Audiovisual</button>
+                        <div class="card-content">
+                            <p>Creación de guiones, storyboards y edición de video. Me enfoco en capturar la esencia de cada historia con una composición dinámica y narrativa sólida.</p>
+                        </div>
+                    </div>
+
+                    <div class="card-interactive">
+                        <button class="btn-about">Arte Digital & Diseño</button>
+                        <div class="card-content">
+                            <p>Desarrollo de ilustraciones, branding y conceptos visuales. Disfruto explorar estéticas grunge, góticas y del manga distópico.</p>
+                        </div>
+                    </div>
+
+                    <div class="card-interactive">
+                        <button class="btn-about">Fotografía</button>
+                        <div class="card-content">
+                            <p>Exploración de paisajes urbanos, juegos de luces y composición técnica en modo manual, buscando siempre congelar momentos con un estilo propio.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion-imagen">
+            <div class="contenedor">
+                <h2 class="titulo-seccion">Más sobre mí</h2>
+                <p class="subtitulo">Haz clic en los botones para conocerme un poco más:</p>
+
+                <div class="contenedor-botones">
+                    <details class="boton-interactivo">
+                        <summary>🌑 Mi Pasión</summary>
+                        <div class="contenido-boton">
+                            <p>Me encanta crear soluciones digitales, aprender nuevas tecnologías y enfrentar retos lógicos que me permitan seguir creciendo profesionalmente.</p>
+                        </div>
+                    </details>
+
+                    <details class="boton-interactivo">
+                        <summary>🕸️ Mis Habilidades</summary>
+                        <div class="contenido-boton">
+                            <p>Tengo experiencia en desarrollo web (HTML, CSS, JavaScript), resolución de problemas, trabajo en equipo y una gran capacidad de adaptación al cambio.</p>
+                        </div>
+                    </details>
+
+                    <details class="boton-interactivo">
+                        <summary>🔮 Mis Metas</summary>
+                        <div class="contenido-boton">
+                            <p>Actualmente busco colaborar en proyectos innovadores donde pueda aportar valor con mis conocimientos y seguir desarrollándome como profesional.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="seccion-contacto">
+            <div class="contenedor contacto-flex">
+                <div class="contacto-info">
+                    <h3>¿Tienes un proyecto en mente?</h3>
+                    <p>Mi proyecto en mente es graduarme de la carrera de multimedia y producción audiovisual con el objetivo de trabajar en cualquier ámbito de desempeño y poder trabajar a gusto en lo que más me gusta.</p>
+                </div>
+                <div class="contacto-formulario">
+                    <form action="[https://formspree.io/f/mojzveyb](https://formspree.io/f/mojzveyb)" method="POST">
+                        <div class="grupo-formulario">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="grupo-formulario">
+                            <label for="correo">Correo</label>
+                            <input type="email" id="correo" name="correo" required>
+                        </div>
+                        <div class="grupo-formulario">
+                            <label for="mensaje">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="boton-formulario">Enviar mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="sitio-footer">
+        <div class="contenedor footer-flex">
+            <p class="copyright">&copy; 2026 Joel Salas. Todos los derechos reservados.</p>
+            <div class="redes-sociales">
+                <a href="[https://www.linkedin.com/jobs/](https://www.linkedin.com/jobs/)" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="[https://www.instagram.com/lakecor33/](https://www.instagram.com/lakecor33/)" target="_blank" rel="noopener">Instagram</a>
+                <a href="[https://github.com/settings/education/benefits](https://github.com/settings/education/benefits)" target="_blank" rel="noopener">GitHub</a>
+                <a href="[https://www.behance.net/thashthash](https://www.behance.net/thashthash)" target="_blank" rel="noopener">Behance</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Estructura del Modal de Proyectos que hacía falta -->
+    <div id="modal-proyecto" class="modal">
         <span class="cerrar-modal">&times;</span>
-        <img class="contenido-modal">
-        <div class="subtitulo-modal"></div>
+        <img class="modal-contenido" id="imagen-maximizada">
+        <div id="descripcion-modal"></div>
     </div>
 
+    <script src="[https://www.youtube.com/iframe_api](https://www.youtube.com/iframe_api)"></script>
+    
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            /* ------------------------------------------------------------------
-               1. REPRODUCTOR DE AUDIO
-               ------------------------------------------------------------------ */
-            const botonMusica = document.querySelector('.btn-musica-mecanico-real');
-            const audio = new Audio('tu-audio.mp3'); // Setea tu archivo real aquí
-            audio.loop = true;
+    let player;
+    let apiLista = false;
 
-            if (botonMusica) {
-                botonMusica.addEventListener('click', () => {
-                    if (audio.paused) {
-                        audio.play()
-                            .then(() => { botonMusica.classList.add('sonando'); })
-                            .catch(err => console.log("Lógica de carga de audio activa: ", err));
-                    } else {
-                        audio.pause();
-                        botonMusica.classList.remove('sonando');
-                    }
-                });
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('youtube-player-oculto', {
+            height: '0',
+            width: '0',
+            videoId: 'HyHlLFnkOOI', 
+            playerVars: {
+                'autoplay': 0,
+                'loop': 1,
+                'playlist': 'HyHlLFnkOOI', 
+                'controls': 0,
+                'disablekb': 1,
+                'modestbranding': 1,
+                'rel': 0,
+                'mute': 1 
+            },
+            events: {
+                'onReady': onPlayerReady
             }
+        });
+    }
 
-            /* ------------------------------------------------------------------
-               2. MODAL VISTA COMPLETADA DE PROYECTOS
-               ------------------------------------------------------------------ */
-            const modal = document.querySelector('.modal-vista-completa');
-            const imagenModal = document.querySelector('.contenido-modal');
-            const subtituloModal = document.querySelector('.subtitulo-modal');
-            const botonCerrar = document.querySelector('.cerrar-modal');
-            const imagenesProyectos = document.querySelectorAll('.card-interactive img');
+    function onPlayerReady(event) {
+        apiLista = true;
+    }
 
-            imagenesProyectos.forEach(imagen => {
-                imagen.style.cursor = 'zoom-in';
-                
-                imagen.addEventListener('click', () => {
-                    if (modal && imagenModal) {
-                        modal.style.display = "block";
-                        imagenModal.src = imagen.src;
-                        
-                        // Extrae dinámicamente el título de la tarjeta para el subtítulo del modal
-                        const tarjetaPadre = imagen.closest('.card-interactive');
-                        const tituloTarjeta = tarjetaPadre ? tarjetaPadre.querySelector('h3') : null;
-                        
-                        if (subtituloModal) {
-                            subtituloModal.textContent = tituloTarjeta ? tituloTarjeta.textContent : (imagen.alt || "");
-                        }
-                        
-                        document.body.classList.add('modal-abierto');
-                    }
-                });
-            });
+    function controlarMusica() {
+        if (!apiLista || !player) return;
 
-            // Funciones de cierre del modal
-            const cerrarModalVentana = () => {
-                if (modal) {
-                    modal.style.display = "none";
-                    document.body.classList.remove('modal-abierto');
-                }
-            };
+        const boton = document.getElementById('btn-reproductor');
+        const texto = boton.querySelector('.texto-musica-real');
+        const estadoActual = player.getPlayerState();
 
-            if (botonCerrar) botonCerrar.addEventListener('click', cerrarModalVentana);
-            
-            if (modal) {
-                modal.addEventListener('click', (e) => {
-                    if (e.target === modal) cerrarModalVentana();
-                });
-            }
-            
-            document.addEventListener('keydown', (e) => {
-                if (e.key === "Escape") cerrarModalVentana();
+        if (estadoActual !== 1) {
+            player.unMute();        
+            player.setVolume(50);   
+            player.playVideo();
+            boton.classList.add('sonando');
+            if (texto) texto.textContent = 'PAUSA';
+        } else {
+            player.pauseVideo();
+            boton.classList.remove('sonando');
+            if (texto) texto.textContent = 'Música';
+        }
+    }
+    </script>
+
+    <script>
+    // Lógica para expandir imágenes de proyectos
+    document.addEventListener("DOMContentLoaded", function() {
+        const modal = document.getElementById("modal-proyecto");
+        const imgModal = document.getElementById("imagen-maximizada");
+        const textoModal = document.getElementById("descripcion-modal");
+        const botonCerrar = document.querySelector(".cerrar-modal");
+        const imagenesProyectos = document.querySelectorAll(".imagen-proyecto-clic");
+
+        imagenesProyectos.forEach(imagen => {
+            imagen.style.cursor = "pointer"; 
+            imagen.addEventListener("click", function() {
+                modal.style.display = "block";
+                imgModal.src = this.src; 
+                textoModal.textContent = this.alt; 
+                document.body.classList.add("modal-abierto"); 
             });
         });
+
+        // Evento para cerrar el modal al hacer clic en la (X)
+        if (botonCerrar) {
+            botonCerrar.addEventListener("click", function() {
+                modal.style.display = "none";
+                document.body.classList.remove("modal-abierto");
+            });
+        }
+
+        // Cerrar también si se hace clic fuera de la imagen
+        window.addEventListener("click", function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+                document.body.classList.remove("modal-abierto");
+            }
+        });
+    });
     </script>
 </body>
 </html>
