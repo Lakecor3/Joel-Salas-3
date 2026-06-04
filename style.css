@@ -510,13 +510,18 @@ a {
 }
 
 /* ==========================================================================
-   10. CONSOLA DE AUDIO FIJA (REPRODUCTOR)
+   10. CONSOLA DE AUDIO CENTRADA (REPRODUCTOR)
    ========================================================================== */
 .reproductor-gotico-fijo {
-    position: fixed !important;
-    bottom: 25px !important;
-    right: 25px !important;
-    z-index: 999999 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin: 40px 0 !important; /* Espaciado superior e inferior para que respire */
+    position: relative !important;
+    bottom: auto !important;
+    right: auto !important;
+    z-index: 999 !important;
 }
 
 button.btn-musica-mecanico-real {
@@ -525,21 +530,22 @@ button.btn-musica-mecanico-real {
     padding: 4px !important;
     border-radius: 30px !important;
     cursor: pointer !important;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6), 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7), 
                 inset 0 2px 4px rgba(255, 255, 255, 0.05) !important;
     transition: all 0.2s ease !important;
     outline: none !important;
     display: block !important;
+    margin: 0 auto !important; /* Doble seguridad de centrado */
 }
 
 button.btn-musica-mecanico-real .superficie-boton-real {
     background: linear-gradient(135deg, #1c1c22, #131316) !important;
     color: #f4f4f6 !important;
     border: 1px solid #3f3f46 !important;
-    padding: 10px 22px !important;
+    padding: 12px 28px !important; /* Un poco más amplio para que destaque en el centro */
     border-radius: 26px !important;
     font-family: 'Inter', system-ui, sans-serif !important;
-    font-size: 0.85rem !important;
+    font-size: 0.9rem !important; /* Ligeramente más grande para balancear la jerarquía */
     font-weight: 700 !important;
     letter-spacing: 1.5px !important;
     text-transform: uppercase !important;
@@ -551,8 +557,8 @@ button.btn-musica-mecanico-real .superficie-boton-real {
 }
 
 .led-indicador-real {
-    width: 8px !important;
-    height: 8px !important;
+    width: 9px !important;
+    height: 9px !important;
     background-color: #3f3f46 !important;
     border-radius: 50% !important;
     display: inline-block !important;
@@ -560,7 +566,7 @@ button.btn-musica-mecanico-real .superficie-boton-real {
 }
 
 .icono-musica-real {
-    font-size: 1rem !important;
+    font-size: 1.1rem !important;
     display: inline-block !important;
 }
 
@@ -581,12 +587,12 @@ button.btn-musica-mecanico-real .superficie-boton-real {
 }
 
 button.btn-musica-mecanico-real:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.7), 0 0 10px rgba(138, 43, 226, 0.3) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(138, 43, 226, 0.4) !important;
 }
 
 button.btn-musica-mecanico-real:active {
-    transform: translateY(2px) !important;
+    transform: translateY(1px) !important;
 }
 
 button.btn-musica-mecanico-real:active .superficie-boton-real {
@@ -597,7 +603,7 @@ button.btn-musica-mecanico-real:active .superficie-boton-real {
 /* Estado Encendido */
 button.btn-musica-mecanico-real.sonando .superficie-boton-real {
     border-color: #8a2be2 !important;
-    box-shadow: 0 0 15px rgba(138, 43, 226, 0.4) !important;
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.5) !important;
 }
 
 button.btn-musica-mecanico-real.sonando .led-indicador-real {
@@ -626,75 +632,6 @@ button.btn-musica-mecanico-real.sonando .o3-r { animation: reboteOndaReal 0.8s e
 @keyframes reboteOndaReal {
     0% { height: 3px; }
     100% { height: 14px; }
-}
-
-/* ==========================================================================
-   11. MODAL PARA EXPANSIÓN DE IMÁGENES
-   ========================================================================== */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.95);
-    backdrop-filter: blur(5px);
-}
-
-.modal-contenido {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-    max-height: 80vh;
-    object-fit: contain;
-    padding-top: 60px;
-    animation: zoomIn 0.3s ease;
-}
-
-@keyframes zoomIn {
-    from { transform: scale(0.95); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-.cerrar-modal {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.2s;
-}
-
-.cerrar-modal:hover {
-    color: #ef4444;
-}
-
-#descripcion-modal {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-    text-align: center;
-    color: #ccc;
-    padding: 10px 0;
-    font-weight: 600;
-}
-
-body.modal-abierto {
-    overflow: hidden;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .hero-flex { flex-direction: column-reverse; text-align: center; }
-    .footer-flex { flex-direction: column; text-align: center; }
-    .redes-sociales a { margin: 0 8px; }
 }
 
 
