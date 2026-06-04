@@ -78,6 +78,142 @@
                 </div>
             </div>
         </section>
+        <section class="about-section">
+    <div class="about-container">
+        <h2>Sobre mí</h2>
+        <p class="about-intro">
+            ¡Hola! Soy un apasionado del mundo audiovisual y el diseño digital. Me encanta transformar ideas en narrativas visuales únicas, combinando la técnica con un enfoque oscuro y creativo.
+        </p>
+
+        <div class="interactive-buttons">
+            
+            <div class="card-interactive">
+                <button class="btn-about">Producción Audiovisual</button>
+                <div class="card-content">
+                    <p>Creación de guiones, storyboards y edición de video. Me enfoco en capturar la esencia de cada historia con una composición dinámica y narrativa sólida.</p>
+                </div>
+            </div>
+
+            <div class="card-interactive">
+                <button class="btn-about">Arte Digital & Diseño</button>
+                <div class="card-content">
+                    <p>Desarrollo de ilustraciones, branding y conceptos visuales. Disfruto explorar estéticas grunge, góticas y del manga distópico.</p>
+                </div>
+            </div>
+
+            <div class="card-interactive">
+                <button class="btn-about">Fotografía</button>
+                <div class="card-content">
+                    <p>Exploración de paisajes urbanos, juegos de luces y composición técnica en modo manual, buscando siempre congelar momentos con un estilo propio.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    :root {
+        --color-principal: #111;
+        --color-acento: #8a2be2; /* Un tono morado/gótico, puedes cambiarlo por el de tu paleta */
+        --color-texto: #ffffff;
+        --color-gris: #222;
+    }
+
+    .about-section {
+        background-color: var(--color-principal);
+        color: var(--color-texto);
+        padding: 60px 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+    }
+
+    .about-container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .about-container h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border-bottom: 2px solid var(--color-acento);
+        display: inline-block;
+        padding-bottom: 5px;
+    }
+
+    .about-intro {
+        font-size: 1.1rem;
+        color: #ccc;
+        margin-bottom: 40px;
+        line-height: 1.6;
+    }
+
+    /* Grid de botones */
+    .interactive-buttons {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    /* Estructura de la tarjeta interactiva */
+    .card-interactive {
+        background-color: var(--color-gris);
+        border: 1px solid #333;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    /* Estilo del Botón */
+    .btn-about {
+        width: 100%;
+        background-color: var(--color-gris);
+        color: var(--color-texto);
+        border: none;
+        padding: 15px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Interactividad: Al pasar el mouse sobre la tarjeta */
+    .card-interactive:hover {
+        border-color: var(--color-acento);
+        box-shadow: 0 4px 15px rgba(138, 43, 226, 0.2);
+        transform: translateY(-2px);
+    }
+
+    .card-interactive:hover .btn-about {
+        background-color: var(--color-acento);
+        color: #fff;
+    }
+
+    /* Contenido oculto que se despliega al hacer hover */
+    .card-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out, padding 0.3s ease;
+        padding: 0 15px;
+        background-color: #1a1a1a;
+        text-align: left;
+    }
+
+    .card-content p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: #bbb;
+    }
+
+    /* Al hacer hover, se muestra la descripción suavemente */
+    .card-interactive:hover .card-content {
+        max-height: 150px; /* Ajusta según el largo del texto */
+        padding: 15px;
+    }
+</style>
+
 
         <section id="contacto" class="seccion-contacto">
             <div class="contenedor contacto-flex">
@@ -86,7 +222,7 @@
                     <p>Mi proyecto en mente es graduarme de la carrera de multimedia y producción audiovisual con el objetivo de trabajar en cualquier ámbito de desempeño y poder trabajar agusto en lo que más me gusta.</p>
                 </div>
                 <div class="contacto-formulario">
-                    <form action="https://formspree.io/f/mzdwnogg" method="POST">
+                    <form action="#" method="POST">
                         <div class="grupo-formulario">
                             <label for="nombre">Nombre</label>
                             <input type="text" id="nombre" name="nombre" required>
