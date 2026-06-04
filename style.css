@@ -1,39 +1,276 @@
 /* ==========================================================================
-   ESTILOS EXCLUSIVOS PARA LA SECCIÓN "SOBRE MÍ" (ESTÉTICA GÓTICA/DISTÓPICA)
+   1. PALETA DE COLORES GÓTICA / DISTÓPICA Y RESET
    ========================================================================== */
+:root {
+    --fondo-oscuro: #0a0a0c;       /* Negro profundo con matriz fría */
+    --fondo-tarjetas: #131316;     /* Gris grafito muy oscuro */
+    --color-acento: #ac0d0d;       /* Carmesí / Gótico */
+    --color-acento-hover: #a04ef6; /* Morado neón brillante */
+    --texto-principal: #f4f4f6;   /* Blanco roto (alta legibilidad) */
+    --texto-secundario: #a0a0aa;  /* Gris claro para descripciones */
+    --borde-sutil: #27272a;        /* Líneas oscuras divisorias */
+    --rojo-distopico: #e70a0a;     /* Toque carmesí para detalles */
+}
 
-/* Contenedor principal de la sección */
-.about-section {
-    background-color: #0a0a0c !important; /* Negro profundo con matriz fría */
-    color: #f4f4f6 !important;            /* Blanco roto de alta legibilidad */
-    padding: 80px 20px;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--fondo-oscuro);
+    color: var(--texto-principal);
     font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.contenedor {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    color: var(--texto-principal);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* ==========================================================================
+   2. HEADER & NAVEGACIÓN
+   ========================================================================== */
+.sitio-header {
+    background-color: rgba(10, 10, 12, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--borde-sutil);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 15px 0;
+}
+
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--color-acento);
+    text-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+}
+
+.navegacion-principal a {
+    margin-left: 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--texto-secundario);
+}
+
+.navegacion-principal a:hover {
+    color: var(--color-acento-hover);
+}
+
+/* ==========================================================================
+   3. SECCIÓN HERO (INICIO)
+   ========================================================================== */
+.seccion-hero {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--borde-sutil);
+}
+
+.hero-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.hero-contenido {
+    flex: 1;
+    min-width: 300px;
+}
+
+.hero-contenido h1 {
+    font-size: 3rem;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+
+.hero-contenido h2 {
+    font-size: 1.5rem;
+    color: var(--color-acento);
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.hero-contenido p {
+    color: var(--texto-secundario);
+    margin-bottom: 30px;
+    font-size: 1.05rem;
+}
+
+.boton-acento {
+    display: inline-block;
+    background-color: var(--color-acento);
+    padding: 12px 28px;
+    font-weight: 600;
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+    transition: all 0.3s ease;
+}
+
+.boton-acento:hover {
+    background-color: var(--color-acento-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(138, 43, 226, 0.5);
+}
+
+.hero-imagen img {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid var(--borde-sutil);
+    filter: grayscale(40%) contrast(110%);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* ==========================================================================
+   4. SECCIÓN PROYECTOS (GRID)
+   ========================================================================== */
+.seccion-proyectos {
+    padding: 80px 0;
+    background-color: #0d0d11;
+    border-bottom: 1px solid var(--borde-sutil);
+}
+
+.titulo-seccion {
+    font-size: 2.2rem;
     text-align: center;
+    margin-bottom: 50px;
+    letter-spacing: 1px;
+}
+
+.proyectos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.tarjeta-proyecto {
+    background-color: var(--fondo-tarjetas);
+    border: 1px solid var(--borde-sutil);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.tarjeta-proyecto:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-acento);
+}
+
+.tarjeta-proyecto img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    filter: grayscale(30%) brightness(85%);
+    transition: filter 0.3s ease;
+    cursor: pointer;
+}
+
+.tarjeta-proyecto:hover img {
+    filter: grayscale(0%) brightness(100%);
+}
+
+.tarjeta-cuerpo {
+    padding: 25px;
+}
+
+.tarjeta-cuerpo h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    color: var(--texto-principal);
+}
+
+.tarjeta-cuerpo p {
+    color: var(--texto-secundario);
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   5. SECCIÓN HABILIDADES (PÍLDORAS)
+   ========================================================================== */
+.seccion-habilidades {
+    padding: 60px 0;
+    border-bottom: 1px solid var(--borde-sutil);
+}
+
+.habilidades-flex {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.tarjeta-habilidad {
+    background-color: var(--fondo-tarjetas);
+    border: 1px solid var(--borde-sutil);
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--texto-secundario);
+    transition: all 0.3s ease;
+}
+
+.tarjeta-habilidad:hover {
+    border-color: var(--rojo-distopico);
+    color: var(--texto-principal);
+    background-color: rgba(153, 0, 0, 0.1);
+    transform: scale(1.05);
+}
+
+/* ==========================================================================
+   6. SECCIÓN SOBRE MÍ INTERACTIVA
+   ========================================================================== */
+.about-section {
+    background-color: var(--fondo-oscuro);
+    padding: 80px 0;
+    border-bottom: 1px solid var(--borde-sutil);
 }
 
 .about-container {
     max-width: 900px;
     margin: 0 auto;
+    text-align: center;
 }
 
-/* Título con línea de acento morada */
 .about-container h2 {
     font-size: 2.2rem;
-    color: #f4f4f6 !important;
     margin-bottom: 20px;
     letter-spacing: 1px;
-    border-bottom: 2px solid #8a2be2; /* Morado gótico */
+    border-bottom: 2px solid var(--color-acento);
     display: inline-block;
     padding-bottom: 5px;
 }
 
 .about-intro {
     font-size: 1.1rem;
-    color: #a0a0aa !important; /* Gris claro para la descripción */
+    color: var(--texto-secundario);
     margin-bottom: 40px;
 }
 
-/* Grid de las tarjetas con efecto hover */
 .interactive-buttons {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -41,18 +278,17 @@
 }
 
 .card-interactive {
-    background-color: #131316 !important; /* Gris grafito muy oscuro */
-    border: 1px solid #27272a !important;   /* Borde sutil */
+    background-color: var(--fondo-tarjetas);
+    border: 1px solid var(--borde-sutil);
     border-radius: 8px;
     overflow: hidden;
     transition: all 0.3s ease;
 }
 
-/* El botón de la tarjeta */
 .btn-about {
     width: 100%;
-    background-color: #131316 !important;
-    color: #f4f4f6 !important;
+    background-color: var(--fondo-tarjetas);
+    color: var(--texto-principal);
     border: none;
     padding: 18px;
     font-size: 1.05rem;
@@ -63,19 +299,16 @@
     transition: background-color 0.3s ease;
 }
 
-/* Comportamiento al pasar el mouse por la tarjeta */
 .card-interactive:hover {
-    border-color: #8a2be2 !important;
+    border-color: var(--color-acento);
     box-shadow: 0 4px 20px rgba(138, 43, 226, 0.15);
     transform: translateY(-3px);
 }
 
 .card-interactive:hover .btn-about {
-    background-color: #8a2be2 !important;
-    color: #ffffff !important;
+    background-color: var(--color-acento);
 }
 
-/* Texto oculto dentro de las tarjetas */
 .card-content {
     max-height: 0;
     overflow: hidden;
@@ -87,8 +320,7 @@
 
 .card-content p {
     font-size: 0.95rem;
-    color: #a0a0aa !important;
-    margin: 0;
+    color: var(--texto-secundario);
 }
 
 .card-interactive:hover .card-content {
@@ -97,11 +329,17 @@
 }
 
 /* ==========================================================================
-   ESTILOS EXCLUSIVOS PARA LOS BOTONES DESPLEGABLES (DETAILS / SUMMARY)
+   7. BOTONES DESPLEGABLES EXTRAS (DETAILS)
    ========================================================================== */
+.seccion-imagen {
+    padding: 80px 0;
+    background-color: #0d0d11;
+    border-bottom: 1px solid var(--borde-sutil);
+    text-align: center;
+}
 
 .subtitulo {
-    color: #a0a0aa !important;
+    color: var(--texto-secundario);
     margin-bottom: 30px;
 }
 
@@ -115,8 +353,8 @@
 }
 
 .boton-interactivo {
-    background-color: #131316 !important;
-    border: 1px solid #27272a !important;
+    background-color: var(--fondo-tarjetas);
+    border: 1px solid var(--borde-sutil);
     border-radius: 8px;
     overflow: hidden;
     transition: all 0.3s ease;
@@ -125,75 +363,162 @@
 .boton-interactivo summary {
     padding: 16px 20px;
     font-weight: 600;
-    color: #f4f4f6 !important;
     cursor: pointer;
     list-style: none;
     display: flex;
     justify-content: space-between;
 }
 
-/* Quitar la flecha por defecto en Safari */
-.boton-interactivo summary::-webkit-details-marker {
-    display: none;
-}
-
-/* Símbolo personalizado */
 .boton-interactivo summary::after {
     content: '＋';
-    color: #8a2be2;
+    color: var(--color-acento);
 }
 
 .boton-interactivo:hover {
-    border-color: #8a2be2 !important;
+    border-color: var(--color-acento);
 }
 
-/* Estilo cuando el acordeón está abierto */
 .boton-interactivo[open] summary::after {
     content: '✕';
-    color: #990000; /* Detalle carmesí al cerrar */
+    color: var(--rojo-distopico);
 }
 
 .contenido-boton {
     padding: 20px;
     background-color: #0a0a0c;
-    border-top: 1px solid #27272a;
+    border-top: 1px solid var(--borde-sutil);
 }
 
 .contenido-boton p {
-    color: #a0a0aa !important;
-    margin: 0;
+    color: var(--texto-secundario);
 }
 
 /* ==========================================================================
-   RECONEXIÓN DE LA IMAGEN DE FONDO (CON FILTRO OSCURO PARA LEGIBILIDAD)
+   8. SECCIÓN CONTACTO & FORMULARIO
    ========================================================================== */
-
-.seccion-imagen {
+.seccion-contacto {
     padding: 80px 0;
-    background-color: #0d0d11 !important; /* Variación sutil de fondo oscuro de reserva */
-    background-image: linear-gradient(rgba(10, 10, 12, 0.85), rgba(10, 10, 12, 0.85)), url('tu-imagen-de-fondo.jpg'); 
-    background-size: cover;
-    background-position: center;
-    background-attachment: scroll; /* Cambia a 'fixed' si quieres un efecto parallax */
-    text-align: center;
+}
+
+.contacto-flex {
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.contacto-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contacto-info h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.contacto-info p {
+    color: var(--texto-secundario);
+    font-size: 1.05rem;
+}
+
+.contacto-formulario {
+    flex: 1.2;
+    min-width: 300px;
+    background-color: var(--fondo-tarjetas);
+    padding: 35px;
+    border-radius: 12px;
+    border: 1px solid var(--borde-sutil);
+}
+
+.grupo-formulario {
+    margin-bottom: 20px;
+}
+
+.grupo-formulario label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--texto-secundario);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.grupo-formulario input,
+.grupo-formulario textarea {
+    width: 100%;
+    background-color: var(--fondo-oscuro);
+    border: 1px solid var(--borde-sutil);
+    padding: 12px;
+    border-radius: 6px;
+    color: var(--texto-principal);
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.grupo-formulario input:focus,
+.grupo-formulario textarea:focus {
+    outline: none;
+    border-color: var(--color-acento);
+}
+
+.boton-formulario {
+    width: 100%;
+    background-color: transparent;
+    border: 2px solid var(--color-acento);
+    color: var(--texto-principal);
+    padding: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.boton-formulario:hover {
+    background-color: var(--color-acento);
+    box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
 }
 
 /* ==========================================================================
-   CONSOLA DE AUDIO MECÁNICA (UBICACIÓN CENTRADA TOTAL E INMUNE)
+   9. FOOTER
    ========================================================================== */
+.sitio-footer {
+    background-color: #050507;
+    padding: 30px 0;
+    border-top: 1px solid var(--borde-sutil);
+    font-size: 0.9rem;
+    color: var(--texto-secundario);
+}
 
-/* Contenedor flotante centrado de forma absoluta respecto a la pantalla entera */
+.footer-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.redes-sociales a {
+    margin-left: 15px;
+    color: var(--texto-secundario);
+}
+
+.redes-sociales a:hover {
+    color: var(--color-acento-hover);
+}
+
+/* ==========================================================================
+   10. CONSOLA DE AUDIO FIJA (REPRODUCTOR)
+   ========================================================================== */
 .reproductor-gotico-fijo {
     position: fixed !important;
-    bottom: 25px !important;    /* Distancia desde el borde inferior */
-    left: 0 !important;         /* Estira la zona de cálculo a la izquierda */
-    right: 0 !important;        /* Estira la zona de cálculo a la derecha */
-    margin: 0 auto !important;  /* Centra el elemento en el eje horizontal matemáticamente */
-    width: max-content !important; /* Se ajusta solo al tamaño del botón */
-    z-index: 999999 !important; /* Lo pone por encima de cualquier capa o footer */
+    bottom: 25px !important;
+    right: 25px !important;
+    z-index: 999999 !important;
 }
 
-/* CHASIS EXTERNO DEL BOTÓN */
 button.btn-musica-mecanico-real {
     background: #09090b !important;
     border: 2px solid #27272a !important;
@@ -207,7 +532,6 @@ button.btn-musica-mecanico-real {
     display: block !important;
 }
 
-/* SUPERFICIE INTERNA TRIDIMENSIONAL */
 button.btn-musica-mecanico-real .superficie-boton-real {
     background: linear-gradient(135deg, #1c1c22, #131316) !important;
     color: #f4f4f6 !important;
@@ -226,7 +550,6 @@ button.btn-musica-mecanico-real .superficie-boton-real {
                 0 4px 6px rgba(0, 0, 0, 0.4) !important;
 }
 
-/* LED indicador analógico (Estado apagado) */
 .led-indicador-real {
     width: 8px !important;
     height: 8px !important;
@@ -241,7 +564,6 @@ button.btn-musica-mecanico-real .superficie-boton-real {
     display: inline-block !important;
 }
 
-/* Contenedor de las barras del ecualizador */
 .ondas-contenedor-real {
     display: flex !important;
     align-items: flex-end !important;
@@ -250,43 +572,36 @@ button.btn-musica-mecanico-real .superficie-boton-real {
     width: 18px !important;
 }
 
-/* ¡SOLUCIÓN A LOS TRES PUNTOS! 
-   Por defecto las barras están ocultas (display: none) para que no se vean como puntos fijos.
-*/
 .onda-real {
-    display: none !important; 
+    display: none !important;
     width: 3px !important;
     height: 3px !important;
     background-color: #3f3f46 !important;
     border-radius: 2px !important;
 }
 
-/* --- MECÁNICA INTERACTIVA DEL CURSOR (HOVER Y ACTIVE SIMÉTRICOS) --- */
-
 button.btn-musica-mecanico-real:hover {
-    transform: scale(1.03) !important; 
+    transform: translateY(-2px) !important;
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.7), 0 0 10px rgba(138, 43, 226, 0.3) !important;
 }
 
 button.btn-musica-mecanico-real:active {
-    transform: scale(0.97) !important; 
+    transform: translateY(2px) !important;
 }
 
 button.btn-musica-mecanico-real:active .superficie-boton-real {
     box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.7) !important;
+    transform: scale(0.98) !important;
 }
 
-/* ==========================================================================
-   ESTADOS DE REPRODUCCIÓN (ACTIVADOS DINÁMICAMENTE POR JAVASCRIPT)
-   ========================================================================== */
-
+/* Estado Encendido */
 button.btn-musica-mecanico-real.sonando .superficie-boton-real {
-    border-color: #8a2be2 !important; 
+    border-color: #8a2be2 !important;
     box-shadow: 0 0 15px rgba(138, 43, 226, 0.4) !important;
 }
 
 button.btn-musica-mecanico-real.sonando .led-indicador-real {
-    background-color: #a04ef6 !important; 
+    background-color: #a04ef6 !important;
     box-shadow: 0 0 10px #8a2be2 !important;
 }
 
@@ -294,7 +609,6 @@ button.btn-musica-mecanico-real.sonando .icono-musica-real {
     animation: rotarDiscoReal 2.5s linear infinite !important;
 }
 
-/* Cuando la música esté sonando, las barras se vuelven visibles e inician su animación */
 button.btn-musica-mecanico-real.sonando .onda-real {
     display: inline-block !important;
     background-color: #a04ef6 !important;
@@ -304,7 +618,6 @@ button.btn-musica-mecanico-real.sonando .o1-r { animation: reboteOndaReal 0.6s e
 button.btn-musica-mecanico-real.sonando .o2-r { animation: reboteOndaReal 0.4s ease-in-out infinite alternate 0.15s !important; }
 button.btn-musica-mecanico-real.sonando .o3-r { animation: reboteOndaReal 0.8s ease-in-out infinite alternate 0.3s !important; }
 
-/* Animaciones de reproducción */
 @keyframes rotarDiscoReal {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
@@ -313,6 +626,75 @@ button.btn-musica-mecanico-real.sonando .o3-r { animation: reboteOndaReal 0.8s e
 @keyframes reboteOndaReal {
     0% { height: 3px; }
     100% { height: 14px; }
+}
+
+/* ==========================================================================
+   11. MODAL PARA EXPANSIÓN DE IMÁGENES
+   ========================================================================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.95);
+    backdrop-filter: blur(5px);
+}
+
+.modal-contenido {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    max-height: 80vh;
+    object-fit: contain;
+    padding-top: 60px;
+    animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.cerrar-modal {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.cerrar-modal:hover {
+    color: #ef4444;
+}
+
+#descripcion-modal {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    font-weight: 600;
+}
+
+body.modal-abierto {
+    overflow: hidden;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero-flex { flex-direction: column-reverse; text-align: center; }
+    .footer-flex { flex-direction: column; text-align: center; }
+    .redes-sociales a { margin: 0 8px; }
 }
 
 
