@@ -1,159 +1,197 @@
 /* ==========================================================================
-   1. ESTILOS GENERALES Y BASE
+   ESTILOS EXCLUSIVOS PARA LA SECCIÓN "SOBRE MÍ" (ESTÉTICA GÓTICA/DISTÓPICA)
    ========================================================================== */
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #0a0a0c;
-    font-family: 'Inter', sans-serif;
-    color: #f4f4f6;
-    overflow-x: hidden;
-}
 
-/* ==========================================================================
-   2. SECCIÓN "MIS PROYECTOS"
-   ========================================================================== */
+/* Contenedor principal de la sección */
 .about-section {
-    background-color: #0a0a0c !important; 
-    color: #f4f4f6 !important;            
+    background-color: #0a0a0c !important; /* Negro profundo con matriz fría */
+    color: #f4f4f6 !important;            /* Blanco roto de alta legibilidad */
     padding: 80px 20px;
+    font-family: 'Inter', sans-serif;
     text-align: center;
 }
 
 .about-container {
-    max-width: 1100px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
+/* Título con línea de acento morada */
 .about-container h2 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     color: #f4f4f6 !important;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     letter-spacing: 1px;
-    border-bottom: 2px solid #8a2be2; 
+    border-bottom: 2px solid #8a2be2; /* Morado gótico */
     display: inline-block;
     padding-bottom: 5px;
 }
 
-/* Grid de Tarjetas */
+.about-intro {
+    font-size: 1.1rem;
+    color: #a0a0aa !important; /* Gris claro para la descripción */
+    margin-bottom: 40px;
+}
+
+/* Grid de las tarjetas con efecto hover */
 .interactive-buttons {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    padding: 20px 0;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
 }
 
 .card-interactive {
-    background-color: #131316 !important; 
-    border: 1px solid #27272a !important;   
-    border-radius: 12px;
+    background-color: #131316 !important; /* Gris grafito muy oscuro */
+    border: 1px solid #27272a !important;   /* Borde sutil */
+    border-radius: 8px;
     overflow: hidden;
     transition: all 0.3s ease;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
 }
 
-/* Contenedor de Imagen */
-.contenedor-imagen-proy {
+/* El botón de la tarjeta */
+.btn-about {
     width: 100%;
-    height: 240px;
-    overflow: hidden;
-    background-color: #0a0a0c;
+    background-color: #131316 !important;
+    color: #f4f4f6 !important;
+    border: none;
+    padding: 18px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease;
 }
 
-.card-interactive img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-/* Efectos Hover */
+/* Comportamiento al pasar el mouse por la tarjeta */
 .card-interactive:hover {
     border-color: #8a2be2 !important;
-    box-shadow: 0 8px 30px rgba(138, 43, 226, 0.2);
-    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(138, 43, 226, 0.15);
+    transform: translateY(-3px);
 }
 
-.card-interactive:hover img {
-    transform: scale(1.05);
+.card-interactive:hover .btn-about {
+    background-color: #8a2be2 !important;
+    color: #ffffff !important;
 }
 
-/* Textos Internos */
-.contenido-tarjeta-proy {
-    padding: 25px;
+/* Texto oculto dentro de las tarjetas */
+.card-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.3s ease;
+    padding: 0 20px;
+    background-color: #0a0a0c;
+    text-align: left;
 }
 
-.contenido-tarjeta-proy h3 {
-    font-size: 1.4rem;
-    color: #f4f4f6;
-    margin: 0 0 15px 0;
-    font-weight: 700;
-}
-
-.contenido-tarjeta-proy p {
+.card-content p {
     font-size: 0.95rem;
     color: #a0a0aa !important;
-    line-height: 1.6;
+    margin: 0;
+}
+
+.card-interactive:hover .card-content {
+    max-height: 180px;
+    padding: 20px;
+}
+
+/* ==========================================================================
+   ESTILOS EXCLUSIVOS PARA LOS BOTONES DESPLEGABLES (DETAILS / SUMMARY)
+   ========================================================================== */
+
+.subtitulo {
+    color: #a0a0aa !important;
+    margin-bottom: 30px;
+}
+
+.contenedor-botones {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.boton-interactivo {
+    background-color: #131316 !important;
+    border: 1px solid #27272a !important;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.boton-interactivo summary {
+    padding: 16px 20px;
+    font-weight: 600;
+    color: #f4f4f6 !important;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Quitar la flecha por defecto en Safari */
+.boton-interactivo summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Símbolo personalizado */
+.boton-interactivo summary::after {
+    content: '＋';
+    color: #8a2be2;
+}
+
+.boton-interactivo:hover {
+    border-color: #8a2be2 !important;
+}
+
+/* Estilo cuando el acordeón está abierto */
+.boton-interactivo[open] summary::after {
+    content: '✕';
+    color: #990000; /* Detalle carmesí al cerrar */
+}
+
+.contenido-boton {
+    padding: 20px;
+    background-color: #0a0a0c;
+    border-top: 1px solid #27272a;
+}
+
+.contenido-boton p {
+    color: #a0a0aa !important;
     margin: 0;
 }
 
 /* ==========================================================================
-   3. FOOTER
+   RECONEXIÓN DE LA IMAGEN DE FONDO (CON FILTRO OSCURO PARA LEGIBILIDAD)
    ========================================================================== */
-footer {
-    background-color: #050507;
-    padding: 40px 20px;
-    margin-top: 60px;
-    border-top: 1px solid #131316;
-}
 
-.footer-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.footer-text {
-    color: #52525b;
-    font-size: 0.9rem;
-    font-family: 'Inter', sans-serif;
-}
-
-.footer-links {
-    display: flex;
-    gap: 20px;
-}
-
-.footer-links a {
-    color: #a0a0aa;
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.2s;
-}
-
-.footer-links a:hover {
-    color: #8a2be2;
+.seccion-imagen {
+    padding: 80px 0;
+    background-color: #0d0d11 !important; /* Variación sutil de fondo oscuro de reserva */
+    background-image: linear-gradient(rgba(10, 10, 12, 0.85), rgba(10, 10, 12, 0.85)), url('tu-imagen-de-fondo.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll; /* Cambia a 'fixed' si quieres un efecto parallax */
+    text-align: center;
 }
 
 /* ==========================================================================
-   4. CONSOLA DE AUDIO MECÁNICA (CENTRADO FIJO TOTAL)
+   CONSOLA DE AUDIO MECÁNICA (UBICACIÓN CENTRADA EN LA MITAD INFERIOR)
    ========================================================================== */
+
+/* Contenedor flotante centrado en la parte inferior de la pantalla */
 .reproductor-gotico-fijo {
     position: fixed !important;
-    bottom: 25px !important;    
-    left: 0 !important;         
-    right: 0 !important;        
-    margin: 0 auto !important;  
-    width: max-content !important; 
-    z-index: 999999 !important; 
+    bottom: 25px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important; /* Mueve el botón exactamente al centro horizontal */
+    z-index: 999999 !important; /* Se asegura de flotar sobre cualquier capa */
 }
 
+/* CHASIS EXTERNO DEL BOTÓN */
 button.btn-musica-mecanico-real {
     background: #09090b !important;
     border: 2px solid #27272a !important;
@@ -167,6 +205,7 @@ button.btn-musica-mecanico-real {
     display: block !important;
 }
 
+/* SUPERFICIE INTERNA TRIDIMENSIONAL */
 button.btn-musica-mecanico-real .superficie-boton-real {
     background: linear-gradient(135deg, #1c1c22, #131316) !important;
     color: #f4f4f6 !important;
@@ -185,6 +224,7 @@ button.btn-musica-mecanico-real .superficie-boton-real {
                 0 4px 6px rgba(0, 0, 0, 0.4) !important;
 }
 
+/* LED indicador analógico (Estado apagado) */
 .led-indicador-real {
     width: 8px !important;
     height: 8px !important;
@@ -199,6 +239,7 @@ button.btn-musica-mecanico-real .superficie-boton-real {
     display: inline-block !important;
 }
 
+/* Contenedor de las barras del ecualizador */
 .ondas-contenedor-real {
     display: flex !important;
     align-items: flex-end !important;
@@ -207,30 +248,35 @@ button.btn-musica-mecanico-real .superficie-boton-real {
     width: 18px !important;
 }
 
-/* Oculta las barras del ecualizador si está en pausa (Elimina los tres puntos) */
+/* Líneas base del ecualizador */
 .onda-real {
-    display: none !important; 
     width: 3px !important;
     height: 3px !important;
     background-color: #3f3f46 !important;
     border-radius: 2px !important;
 }
 
-/* Animaciones Hover / Active Simétricas */
+/* --- MECÁNICA INTERACTIVA DEL CURSOR (HOVER Y ACTIVE CENTRADOS) --- */
+
 button.btn-musica-mecanico-real:hover {
-    transform: scale(1.03) !important; 
+    /* Mantiene el centrado horizontal y añade una escala leve al interactuar */
+    transform: translateX(-50%) scale(1.02) !important; 
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.7), 0 0 10px rgba(138, 43, 226, 0.3) !important;
 }
 
 button.btn-musica-mecanico-real:active {
-    transform: scale(0.97) !important; 
+    /* Efecto de hundimiento manteniendo el eje del centro */
+    transform: translateX(-50%) scale(0.98) !important; 
 }
 
 button.btn-musica-mecanico-real:active .superficie-boton-real {
     box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.7) !important;
 }
 
-/* Estado Encendido (Playing) */
+/* ==========================================================================
+   ESTADOS DE REPRODUCCIÓN (ACTIVADOS DINÁMICAMENTE POR JAVASCRIPT)
+   ========================================================================== */
+
 button.btn-musica-mecanico-real.sonando .superficie-boton-real {
     border-color: #8a2be2 !important; 
     box-shadow: 0 0 15px rgba(138, 43, 226, 0.4) !important;
@@ -246,13 +292,16 @@ button.btn-musica-mecanico-real.sonando .icono-musica-real {
 }
 
 button.btn-musica-mecanico-real.sonando .onda-real {
-    display: inline-block !important;
     background-color: #a04ef6 !important;
 }
 
 button.btn-musica-mecanico-real.sonando .o1-r { animation: reboteOndaReal 0.6s ease-in-out infinite alternate !important; }
 button.btn-musica-mecanico-real.sonando .o2-r { animation: reboteOndaReal 0.4s ease-in-out infinite alternate 0.15s !important; }
 button.btn-musica-mecanico-real.sonando .o3-r { animation: reboteOndaReal 0.8s ease-in-out infinite alternate 0.3s !important; }
+
+/* ==========================================================================
+   ANIMACIONES CLAVE (KEYFRAMES)
+   ========================================================================== */
 
 @keyframes rotarDiscoReal {
     from { transform: rotate(0deg); }
@@ -265,36 +314,36 @@ button.btn-musica-mecanico-real.sonando .o3-r { animation: reboteOndaReal 0.8s e
 }
 
 /* ==========================================================================
-   5. MODAL DE PANTALLA COMPLETA (IMÁGENES EMERGENTES)
+   VENTANA EMERGENTE (MODAL) PARA VER PROYECTOS EN PANTALLA COMPLETA
    ========================================================================== */
+
 .modal-vista-completa {
     display: none; 
     position: fixed; 
-    z-index: 9999999; 
-    padding-top: 40px; 
+    z-index: 99999; 
+    padding-top: 60px; 
     left: 0;
     top: 0;
     width: 100%; 
     height: 100%; 
     overflow: auto; 
-    background-color: rgba(6, 6, 8, 0.96); 
-    backdrop-filter: blur(8px); 
+    background-color: rgba(10, 10, 10, 0.95); 
+    backdrop-filter: blur(6px); 
 }
 
 .contenido-modal {
     margin: auto;
     display: block;
     max-width: 85%;
-    max-height: 82vh;
-    border: 1px solid #27272a;
-    border-radius: 6px;
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+    max-height: 80vh;
+    border: 1px solid #333;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
     object-fit: contain;
-    animation: zoomIn 0.25s ease-out; 
+    animation: zoomIn 0.3s ease; 
 }
 
 @keyframes zoomIn {
-    from { transform: scale(0.96); opacity: 0; }
+    from { transform: scale(0.95); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
 }
 
@@ -302,15 +351,15 @@ button.btn-musica-mecanico-real.sonando .o3-r { animation: reboteOndaReal 0.8s e
     position: absolute;
     top: 20px;
     right: 35px;
-    color: #a0a0aa;
-    font-size: 38px;
+    color: #888;
+    font-size: 40px;
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: 0.2s;
 }
 
 .cerrar-modal:hover {
-    color: #ef4444; 
+    color: #ff3333; 
     transform: scale(1.1);
 }
 
@@ -318,12 +367,13 @@ button.btn-musica-mecanico-real.sonando .o3-r { animation: reboteOndaReal 0.8s e
     margin: auto;
     display: block;
     width: 80%;
+    max-width: 700px;
     text-align: center;
-    color: #a0a0aa;
-    font-size: 1rem;
+    color: #aaa;
+    font-family: 'Inter', sans-serif;
+    padding: 15px 0;
+    font-size: 14px;
     letter-spacing: 1px;
-    padding: 20px 0;
-    font-weight: 600;
 }
 
 body.modal-abierto {
